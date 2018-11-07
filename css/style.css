@@ -1,0 +1,275 @@
+/* CSS del estilo de pagina, 
+	por 3hh731, kch3f4, j7g9n1, ymh5sa, hgdnog 
+	25/09/17
+*/
+
+body { color: black; min-width: 720px;}
+html { background-color: #ffffff;  min-width: 900px;}
+ex { color: black;}
+
+p {
+	width: 720px;
+	text-align: justify;
+	font-size: 17;
+}
+
+p, h1{	
+	margin-top: 2%;
+	margin-left: 45%;
+}
+
+
+body { 
+	margin: 0px;
+	
+}
+
+
+.pag{
+
+	
+	margin-left: 40%;
+	bottom: 5%;
+}
+.favicon{
+	
+
+
+	margin-left: 20%;
+	margin-right: 1%;
+	
+}
+header { 
+	background-color: #303030; 
+	padding: 20px;
+	height: 170px;
+	width: 97,5%;
+}
+
+.TituloFormulario{
+	font-size: 2em;
+	color: #ff8000;
+}
+
+headertext {	
+	color: #ff6200;
+	font-size: 500%;
+	
+
+}
+
+.bajoheader {
+	background-color: #606060;
+	color: #fff;
+	border: 2px solid #333;
+	padding-left: 200px;
+}
+
+boton-header{
+	color: white;
+	font-size: 2em;
+	text-decoration: none;
+	font-style: bold;
+	margin: 6px;
+	margin-left: 3px;
+	text-align: left;
+}
+
+boton-header:hover{
+	border-bottom: 2px solid white;	
+}
+
+botonav{
+	color: white;
+	font-size: 1.5em;
+	text-decoration: none;
+	font-style: bold;
+	margin: 6px;
+	margin-left: 3px;
+	text-align: left;
+
+}
+
+botonav:hover{
+	border-bottom: 2px solid white;	
+}
+
+fieldset{
+	background-color:#FFFCFB;
+	text-align: center;
+	border: 1px solid orange;
+	width: 97.5%;
+	height: 100%;
+}
+
+formulario{
+	padding: 20px;
+}
+
+texto-correccion{
+	font-size: 16;
+	margin-left: 4px;
+}
+
+table{
+	margin-top: 30px;
+}
+
+tri, trp {
+    display: table-row;
+    vertical-align: inherit;
+}
+
+tdi, tdp{
+	padding: 20px;
+	display: table-cell;
+	vertical-align: middle;
+	width: 320px;
+	font-weight: bold;
+}
+
+trp, tri{
+	margin-top: 15px;
+	margin-bottom: 15px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-size: 1.2em;
+}
+
+tri{
+	background-color: #F0F0F0;
+}
+
+trp{
+	background-color: #FFFFFF;
+}
+
+th { background-color: #D0D0D0;}
+td { background-color: #F0f0f0;}
+
+opcionformulario{
+	color: red;
+}
+
+
+
+.botonavder {
+	float:right;
+}
+
+a {
+	text-decoration: none;
+}
+
+.maindiv {
+	width: 100%;
+}
+
+th, td{
+	width: 205px;
+	height: 42px;
+	padding-left: 5px;
+}
+
+th{
+	font-style: bold;
+	color: #F3901D;
+	
+}
+
+.divTupla{
+	border: 1px solid orange;
+	padding-bottom: 2%;
+	padding-left: 1.5%;
+	padding-right: 1.5%;
+}
+
+.menulateralizq {
+		height: 100%;
+		width: 200px;
+		border: 2px solid #333;
+		border-top-width: 0px;
+		margin: 0px;
+		padding: 0px;
+		float: left;
+		background-color: #E0E0E0;
+}
+
+.menudespleg{
+	position: relative;
+	display: inline-block;
+}
+
+.menu{
+	
+	font-style: bold;
+	height: 40px;
+	text-align: center;
+	width: 190px;
+	background-color: #999999;
+	color: white;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.menu::first-letter{
+	color: #ffA000;
+	font-weight: bold;
+}
+
+.opciones{
+	display: none;
+	position: absolute;
+	background-color: #BABABA;
+	min-width: 80%;
+	width: 190px;
+	z-index: 1;
+}
+
+.opciones a{	
+	height: 30px;
+	color: black;
+	padding-top: 5px;
+	text-align: center;
+	border-top-left-radius: 10px;
+	display: block;
+}
+
+.opciones:hover a:hover{
+	background-color: #FFFFFF;
+}
+
+.menudespleg:hover .opciones{
+	display: block;
+}
+
+.menudespleg:hover .menu{
+	background-color: #606060;
+	color: #ffA000;
+}
+
+botonmenu {	
+	font-size: 1.3em;
+}
+
+.general {
+	height: 1000px;
+	margin-left: 200px;
+	border-top-width: 0px;
+	padding: 10;
+	background-color: #FFF;
+}
+
+.footer {
+	background-color: #A0A0A0;
+
+	position: fixed;
+	bottom: 0;
+	
+	float:bottom;
+	width:100%;
+
+	text-align: center;
+
+	margin-bottom: 0;
+}
