@@ -21,7 +21,7 @@ class Index{  // declaración de clase
 		
 		<html height="100%">
 			<body height="100%">
-			<div style="background-image: url('http://flamingtext.com/net-fu/proxy_form.cgi?script=supermarket-logo&text=<?php echo $strings['Bienvenido: ']. "%20" .$_SESSION['login']."%0D%0D%0D%0D"; ?>&doScale=true&scaleWidth=1900&scaleHeight=1080&_loc=generate&imageoutput=true') ;
+			<div style="background-image: url('http://flamingtext.com/net-fu/proxy_form.cgi?script=supermarket-logo&text=<?php echo 'Bienvenido'. "%20" .$_SESSION['login']."%0D%0D%0D%0D"; ?>&doScale=true&scaleWidth=1900&scaleHeight=1080&_loc=generate&imageoutput=true') ;
 						height: 100%; background-position: center; background-repeat: no-repeat; background-size: auto;"></div>
 			</body>
 		</html>

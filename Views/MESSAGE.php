@@ -1,7 +1,6 @@
 <?php 
 /* Clase vista message, con el fin de poder mostrar un mensaje por pantalla y une nlace de retorno, ambos pasados como parámetros
-	por 3hh731, kch3f4, j7g9n1, ymh5sa, hgdnog 
-	28/11/17
+	
 */
 class Mensaje{
 	var $mensaje;
@@ -20,10 +19,10 @@ class Mensaje{
 		<div class="general">
 		<table id='tuplaDetail'>
 			<tr>
-					<th><?php echo $strings['Informacion']; ?></th><td><?php echo $strings[$this->mensaje]; ?></td>
+					<th>Informacion</th><td><?php echo $this->mensaje; ?></td>
 				</tr>
 				<tr>
-					<th><?php echo $strings['Volver']; ?></th><td><a href="<?php echo $this->retorno; ?>"><img src="../img/return.png" height="27px"/></a></td>
+					<th>Volver</th><td><a href="<?php echo $this->retorno; ?>"><img src="../img/return.png" height="27px"/></a></td>
 				</tr>
 		</table>
 		</div><?php
