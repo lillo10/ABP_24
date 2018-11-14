@@ -66,9 +66,9 @@ ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PadelDB`.`Pista` (
   `idPistas` INT NOT NULL,
-  `Disponibilidad` TINYINT NOT NULL,
-  `Fecha/Hora` DATETIME(1) NOT NULL,
-  PRIMARY KEY (`idPistas`))
+  `Disponibilidad`  VARCHAR(2) NOT NULL,
+  `Fecha/Hora` DATETIME NOT NULL,
+  PRIMARY KEY (`idPistas`, `Fecha/Hora`))
 ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 
