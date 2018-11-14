@@ -9,7 +9,7 @@ if(autenticado()){//Se debería usar un switch que de los permisos pero de momen
 	?>
 	<div class="menulateralizq" >
 			<div class="menudespleg">
-				<a href=""><button class="menu"><botonmenuizq>Pistas</botonmenuizq></button></a>
+				<a href="../Controllers/Pista_CONTROLLER.php"><button class="menu"><botonmenuizq>Pistas</botonmenuizq></button></a>
 			</div>
 			
 			<div class="menudespleg">
