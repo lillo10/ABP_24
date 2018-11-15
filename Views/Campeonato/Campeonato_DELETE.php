@@ -35,7 +35,7 @@ class Campeonato_DELETE{  // declaración de clase
 					<th>Categoria</th><td><?php echo $this->campeonato->_getCategoria(); ?></td>
 				</tr>
 				<tr>
-					<th>Sexo</th><td><?php echo $this->usuario->_getSexo(); ?></td>
+					<th>Sexo</th><td><?php echo $this->campeonato->_getSexo(); ?></td>
 				</tr>
 				<tr>
 					<th>Accion</th><td><button onClick="document.getElementById('idCampeonato').value='<?php echo $this->campeonato->_getidCampeonato(); ?>'" onClick="submit" type="submit" name="orden" value="DELETE"/><img src="../img/erase.png" height="20px"/></td>

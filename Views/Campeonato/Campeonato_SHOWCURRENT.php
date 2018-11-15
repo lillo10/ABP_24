@@ -1,10 +1,9 @@
 <?php 
 /* Clase vista showcurrent, para mostrar una tupla en detalle
-	por 3hh731, kch3f4, j7g9n1, ymh5sa, hgdnog 
-	28/11/17
+	
 */
 	
-class Usuario_SHOWCURRENT{  // declaración de clase
+class Campeonato_SHOWCURRENT{  // declaración de clase
 	var $usuario;//Usuario recibido
 	
 	// declaración constructor de la clase

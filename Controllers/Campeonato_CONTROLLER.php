@@ -10,11 +10,11 @@
 	
 	
 	include_once '../Models/CAMPEONATO.php';
-	include '../Views/Usuario/Campeonato_ADD.php';
-	include '../Views/Usuario/Campeonato_EDIT.php';
-	include '../Views/Usuario/Campeonato_DELETE.php';
-	include '../Views/Usuario/Campeonato_SHOWCURRENT.php';
-	include '../Views/Usuario/Campeonato_SHOWALL.php';
+	include '../Views/Campeonato/Campeonato_ADD.php';
+	include '../Views/Campeonato/Campeonato_EDIT.php';
+	include '../Views/Campeonato/Campeonato_DELETE.php';
+	include '../Views/Campeonato/Campeonato_SHOWCURRENT.php';
+	include '../Views/Campeonato/Campeonato_SHOWALL.php';
 	include '../Views/MESSAGE.php';
 	
 function get_data_form(){
@@ -88,7 +88,7 @@ if (!isset($_REQUEST['orden'])){ //si no viene del formulario, no existe array P
 			case 'SHOWALL':
 					$campeonato = new Campeonato('','','','','');//No necesitamos campeonato para buscar (pero sí para acceder a la BD)
 					$respuesta = $campeonato->SHOWALL();//Todos los datos de la BD estarán aqúi
-					new Campeonato_SHOWALL($respuesta, '');//Le pasamos todos los datos de la BD			
+					new Campeonato_SHOWALL($respuesta, array('','EDIT'));//Le pasamos todos los datos de la BD			
 			break;
 				
 			default:// default, se hace un showall

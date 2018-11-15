@@ -12,7 +12,7 @@ if(autenticado()){//Se debería usar un switch que de los permisos pero de momen
 			<div class="menudespleg">
 				<a href="../Controllers/Pista_CONTROLLER.php"><button class="menu"><botonmenuizq>Pistas</botonmenuizq></button></a>
 			</div>
-			
+
 			<div class="menudespleg">
 				<a href=''><button class="menu"><botonmenuizq>Reservas</botonmenuizq></button></a>
 					<div class="opciones">
@@ -24,8 +24,14 @@ if(autenticado()){//Se debería usar un switch que de los permisos pero de momen
 			<div class="menudespleg">
 				<a href=''><button class="menu">Campeonatos</button></a>
 					<div class="opciones">
+						<?php
+						if(esAdmin()){?>
+							<a href="../Controllers/Campeonato_CONTROLLER.php?orden=ADD">Añadir campeonato</a>
+
+						<?php
+						}?>
 						<a href="">Mis campeonatos</a>
-						<a href="">Lista de campeonatos</a>
+						<a href="../Controllers/Campeonato_CONTROLLER.php">Lista de campeonatos</a>
 					</div>
 			</div>
 
@@ -43,14 +49,16 @@ if(autenticado()){//Se debería usar un switch que de los permisos pero de momen
 						<a href="">Mis clases</a>
 						<a href="">Lista de clases</a>
 					</div>
-			</div>	
+			</div>
+
 			<div class="menudespleg">
 				<a href=''><button class="menu">Gestionar Escuela Deportiva</button></a>
 					<div class="opciones">
 						<a href="">Consultar Escuela Deportiva</a>
 						<a href="">Gestionar Escuela Deportiva</a>
 					</div>
-			</div>	
+			</div>
+	
 	</div>
 	<?php
 }else{

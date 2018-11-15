@@ -27,92 +27,52 @@ class Campeonato_SHOWALL{  // declaración de clase
 	function toString(){
 		include '../Views/Header.php';
 		include '../Views/MenuNavHorizontal.php';
-		include '../Views/MenuLatIzq.php';
-		echo "<div class='general'>";
+		include '../Views/MenuLatIzq.php';?>
 		
-		if(is_string($this->resultado)){
-			echo '<table id="tablaDatos" name="SHOWALL">';
-			if(tienePermisosPara('TRABAJ', 'SHOWAL')){ //Si tiene permisos (ADMIN)							
-				echo '<tr style="margin-bottom: 20px">
-						<td style="background-color: white;"></td>
-						<td style="background-color: white;"><center><img src="../img/add.png" onClick=document.getElementById("ADD").submit() height="40px"> <form id="ADD" onSubmit="controlador.php"><input type="hidden" name="orden" value="ADD"></form> </center></td>
-						<td style="background-color: white;"></td>
-						<td style="background-color: white;"></td>
-						<td style="background-color: white;"><center><img src="../img/search.png" onClick=document.getElementById("SEARCH").submit() height="40px"> <form id="SEARCH" onSubmit="controlador.php"><input type="hidden" name="orden" value="SEARCH"></form> </center></td>
-						<td style="background-color: white;"></td>
-					</tr>';
-			}
-			?>
-			<table id="tuplaDetail">
-				<tr>
-					<th><?php echo $strings['Informacion']; ?></th><td><?php echo $this->resultado; ?></td>
-				</tr>
-				<tr>
-					<th><?php echo $strings['Volver']; ?></th><td><a href="../Controllers/Entrega_CONTROLLER.php"><?php echo $strings['Volver']; ?></a></td>
-				</tr>
-			</table>
-			<?php
-		}else{			
-			echo '<table id="tablaDatos" name="SHOWALL">';
-			if(tienePermisosPara('TRABAJ', 'SHOWAL')){ //Si tiene permisos (ADMIN)							
-				echo '<tr style="margin-bottom: 20px">
-						<td style="background-color: white;"></td>
-						<td style="background-color: white;"><center><img src="../img/add.png" onClick=document.getElementById("ADD").submit() height="40px"> <form id="ADD" onSubmit="controlador.php"><input type="hidden" name="orden" value="ADD"></form> </center></td>
-						<td style="background-color: white;"></td>
-						<td style="background-color: white;"></td>
-						<td style="background-color: white;"><center><img src="../img/search.png" onClick=document.getElementById("SEARCH").submit() height="40px"> <form id="SEARCH" onSubmit="controlador.php"><input type="hidden" name="orden" value="SEARCH"></form> </center></td>
-						<td style="background-color: white;"></td>
-					</tr>';
-			}
-			echo   '<tr>
-						<th>'. $strings['Login'] .'</th>
-						<th>'. $strings['IdTrabajo'] .'</th>
-						<th>'. $strings['Alias'] .'</th>
-						<th>'. $strings['Horas'] .'</th>
-						<th>'. $strings['Ruta'] .'</th>
+		<div class='general'>
+		<table id="tablaDatos" name="SHOWALL">
+		
+		<tr>
+						<th>idCampeonato</th>
+						<th>Periodo</th>
+						<th>Limite inscripcion</th>
+						<th>Categoria</th>
+						<th>Sexo</th>
 						
-						<th>'. $strings['Acciones'] .'</th>
-					</tr>';/*Nombre de los datos*/
-					
+						<th>Acciones</th>
+		</tr>
+			<?php		
 			$i = 0; //Variable para saber el numero de iteraciones e identificar formularios e inputs
 			while($fila = $this->resultado->fetch_row()){//Mientras haya filas, se coje una y se muestra
 				?>
-				<form id='formularioOpcion<?php echo $i; ?>' method='GET' action='../Controllers/Entrega_CONTROLLER.php'>
+				<form id='formularioOpcion<?php echo $i; ?>' method='GET' action='../Controllers/Campeonato_CONTROLLER.php'>
 					<tr>
-						<input type='hidden' name='login' value="<?php echo $fila[0]; ?>"><td id='login'><?php echo $fila[0]; ?></td></input>
-						<input type='hidden' name='IdTrabajo' value="<?php echo $fila[1]; ?>"><td id='IdTrabajo'><?php echo $fila[1]; ?></td></input>
-						<td id='Alias'><?php echo $fila[2]; ?></td>
-						<td id='Horas'><?php echo $fila[3]; ?></td>
-						<td id='Ruta'>
-							<a href="<?php echo $fila[4];?>">
-								<?php echo $fila[4]; ?>
-								<img src="../img/fichero.png" height="20px"/>
-							</a>
-						</td>
-						
+						<input type='hidden' name='idCampeonato' value="<?php echo $fila[0]; ?>"><td id='idCampeonato'><?php echo $fila[0]; ?></td></input>
+						<td id='Periodo'><?php echo $fila[1]; ?></td>
+						<td id='LimInscrip'><?php echo $fila[2]; ?></td>
+						<td id='Categoria'><?php echo $fila[3]; ?></td>
+						<td id='Sexo'><?php echo $fila[4]; ?></td>
+							
 						<td>
 							<input type='hidden' id="oculto<?php echo $i; ?>" name='orden' value=''/>
-							<?php
-							if($this->datosAMostrar["EDIT"]){
-								?>
-								<img onMouseOver="document.getElementById('oculto<?php echo $i; ?>').value='EDIT'" onClick="document.getElementById('formularioOpcion<?php echo $i; ?>').submit()" src='../img/edit.png' height='20px;' style='cursor: pointer'/>
-								<?php
-							}
-							if(tienePermisosPara('ENTREG', 'SHOWAL')){ //Si tiene permisos (ADMIN)?> 
-							<img onMouseOver="document.getElementById('oculto<?php echo $i; ?>').value='DELETE'" onClick="document.getElementById('formularioOpcion<?php echo $i; ?>').submit()" src='../img/erase.png' height='20px;' style='cursor: pointer'/>
 							<img onMouseOver="document.getElementById('oculto<?php echo $i; ?>').value='SHOWCURRENT'" onClick="document.getElementById('formularioOpcion<?php echo $i; ?>').submit()" src='../img/detail.png' height='20px;' style='cursor: pointer'/>
+							<?php
+							if(esAdmin()){ //Si tiene permisos (ADMIN)?> 
+							<img onMouseOver="document.getElementById('oculto<?php echo $i; ?>').value='DELETE'" onClick="document.getElementById('formularioOpcion<?php echo $i; ?>').submit()" src='../img/erase.png' height='20px;' style='cursor: pointer'/>
 						<?php } ?>
 						</td> 
 					</tr>
 				</form>
-			<?php
-			$i++;
-			}//Escribir una celda en el orden en el que se presentan los datos del showall, ponemos un input hidden para que al ejecutar las acciones de edit, showcurrent o delete tengamos el input del login o lo que necesitemos. Las acciones al final en la ultima celda, pero además si es showCurrent se cambia a post para no tener una URL de la nasa
-			echo '</table>';
-		}
-		echo '</div>';
-		include '../Views/Footer.php';	
-	}
+				<?php
+				$i++;
+			}//Escribir una celda en el orden en el que se presentan los datos del showall, ponemos un input hidden para que al ejecutar las acciones de edit, showcurrent o delete tengamos el input del login o lo que necesitemos. Las acciones al final en la ultima celda, pero además si es showCurrent se cambia a post para no tener una URL de la nasa?>
+			</table>
+			</div>
+<?php		include '../Views/Footer.php';	
+
+} 
+	
+		
 		// fin método pinta()
 } //fin de class muestradatos
  ?>

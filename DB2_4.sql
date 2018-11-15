@@ -154,9 +154,9 @@ ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 -- Table `PadelDB`.`Campeonato`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PadelDB`.`Campeonato` (
-  `idCampeonato` INT NOT NULL,
+  `idCampeonato` VARCHAR(10) NOT NULL,
   `Periodo` VARCHAR(23) NOT NULL,
-  `LimInscrip` DATETIME(2) NOT NULL,
+  `LimInscrip` DATE NOT NULL,
   `Categoria` VARCHAR(9) NOT NULL,
   `Sexo` ENUM('Masculino', 'Femenino', 'Mixto') NOT NULL,
   PRIMARY KEY (`idCampeonato`))
@@ -173,7 +173,7 @@ CREATE TABLE IF NOT EXISTS `PadelDB`.`Tabla de clasificacion` (
   `Partidos Perdidos` INT(3) NOT NULL,
   `Partidos Empatados` INT(3) NULL,
   `Puntuacion` INT(3) NULL,
-  `Campeonato_idCampeonato` INT NOT NULL,
+  `Campeonato_idCampeonato` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`idTabla de clasificacion`),
   INDEX `fk_Tabla de clasificacion_Campeonato1_idx` (`Campeonato_idCampeonato` ASC),
   CONSTRAINT `fk_Tabla de clasificacion_Campeonato1`
@@ -193,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `PadelDB`.`Enfrentamiento` (
   `Pareja1` VARCHAR(45) NOT NULL,
   `Pareja2` VARCHAR(45) NOT NULL,
   `Resultado1` ENUM('1', '2', 'X') NOT NULL,
-  `Campeonato_idCampeonato` INT NOT NULL,
+  `Campeonato_idCampeonato` VARCHAR(10) NOT NULL,
   `Pistas_idPistas` INT NOT NULL,
   PRIMARY KEY (`idEnfrentamiento`),
   INDEX `fk_Enfrentamiento_Campeonato1_idx` (`Campeonato_idCampeonato` ASC),
@@ -322,6 +322,8 @@ VALUES ('admin','admin','12345678A','Admin','istrador','666666666','TRUE','FALSE
 INSERT INTO `usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
 VALUES ('entrenador','entrenador','12345678E','Coach','Lillo','666666667','FALSE','TRUE');
 
+INSERT INTO `campeonato`(`idCampeonato`, `Periodo`, `LimInscrip`, `Categoria`, `Sexo`) 
+VALUES ('CMP1','10/09/2018-30/09/2018','2018-09-05','1','Masculino');
 
 
 
