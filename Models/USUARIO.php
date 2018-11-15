@@ -10,10 +10,11 @@ class Usuario{
 	var $Apellidos;
 	var $Telefono;
 	var $Administrador;
+	var $Entrenador;
 	var $mysqli;
 	//Atributos
 	
-	function __construct($login, $password, $DNI, $Nombre, $Apellidos, $Telefono, $Administrador){
+	function __construct($login, $password, $DNI, $Nombre, $Apellidos, $Telefono, $Administrador, $Entrenador){
 		//Asignaciones
 		$this->_setLogin($login);
 		$this->_setPassword($password);
@@ -22,6 +23,7 @@ class Usuario{
 		$this->_setApellidos($Apellidos);
 		$this->_setTelefono($Telefono);
 		$this->_setAdministrador($Administrador);
+		$this->_setEntrenador($Entrenador);
 		
 		include_once '../Functions/AccederBD.php';
 		$this->mysqli = ConectarBD();
@@ -55,6 +57,10 @@ class Usuario{
 		function _setAdministrador($Administrador){
 			$this->Administrador = $Administrador;
 		}
+
+		function _setEntrenador($Entrenador){
+			$this->Entrenador = $Entrenador;
+		}
 		
 		
 		function _getLogin(){
@@ -85,6 +91,9 @@ class Usuario{
 			return $this->Telefono;
 		}
 		
+		function _getEntrenador(){
+			return $this->Entrenador;
+		}
 		
 		function _getDatosGuardados(){//Para recuperar de la base de datos
 			if(($this->login == '')){
@@ -108,11 +117,12 @@ class Usuario{
 					$this->_setApellidos($fila[4]);
 					$this->_setTelefono($fila[5]);
 					$this->_setAdministrador($fila[6]);
+					$this->_setEntrenador($fila[7]);
 				}
 			}
 		}
 	
-	function EDIT(){//Para editar de la BD
+	/*function EDIT(){//Para editar de la BD
 		if(($this->login == '')){
 			return 'Login vacío, introduzca un login';
 		}else{
@@ -143,7 +153,7 @@ class Usuario{
 				return 'Login no existe en la base de datos';
 			}
 		}
-	}
+	}*/
 	
 
 	
@@ -187,9 +197,10 @@ class Usuario{
 				$Apellidos = mysqli_real_escape_string($this->mysqli, $this->Apellidos);
 				$Telefono = mysqli_real_escape_string($this->mysqli, $this->Telefono);
 				$Administrador = mysqli_real_escape_string($this->mysqli, $this->Administrador);
+				$Entrenador = mysqli_real_escape_string($this->mysqli, $this->Entrenador);
 				
-				$sql = "INSERT INTO Usuarios (login, password, DNI, Nombre, Apellido, Telefono, Administrador) VALUES ('$login','$password','$DNI','$Nombre',
-				'$Apellidos','$Telefono','$Administrador')";
+				$sql = "INSERT INTO Usuarios (login, password, DNI, Nombre, Apellido, Telefono, Administrador, Entrenador) VALUES ('$login','$password','$DNI','$Nombre',
+				'$Apellidos','$Telefono','$Administrador','$Entrenador')";
 
 				/*$sql = "INSERT INTO Usuarios (login, password, DNI, Nombre, Apellido, Telefono, Administrador) VALUES ('lillo10','hola','15492083N','Angel', 'Lillo','648737151','FALSE')";*/
 				

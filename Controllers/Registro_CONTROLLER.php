@@ -17,7 +17,7 @@ function get_data_form(){
 	$Apellidos = $_REQUEST['Apellidos'];
 	$Telefono = $_REQUEST['Telefono'];
 
-	$usuario = new Usuario($login, $password, $DNI, $Nombre, $Apellidos, $Telefono, 'FALSE');
+	$usuario = new Usuario($login, $password, $DNI, $Nombre, $Apellidos, $Telefono, 'FALSE','FALSE');
  
 	return $usuario;
 }

@@ -30,18 +30,23 @@ GRANT USAGE ON * . * TO `userPadel`@`localhost`;
 CREATE USER IF NOT EXISTS `userPadel`@`localhost` IDENTIFIED BY 'passPadel';
 GRANT USAGE ON *.* TO `userPadel`@`localhost` REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
 GRANT ALL PRIVILEGES ON `PadelDB`.* TO `userPadel`@`localhost` WITH GRANT OPTION;
--- --------------------------------------------------------
--- -----------------------------------------------------
--- Table `PadelDB`.`Entrenador`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `PadelDB`.`Entrenador` (
-  `DNI` VARCHAR(45) NOT NULL,
-  `Nombre` VARCHAR(45) NOT NULL,
-  `Apellidos` VARCHAR(45) NOT NULL,
-  `Teléfono` INT(9) NOT NULL,
-  PRIMARY KEY (`DNI`))
-ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
+-- -----------------------------------------------------
+-- Table `PadelDB`.`Usuarios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `PadelDB`.`Usuarios` (
+  `login` VARCHAR(9) NOT NULL,
+  `password` VARCHAR(128) NOT NULL,
+  `DNI` VARCHAR(9) NOT NULL,
+  `Nombre` VARCHAR(45) NOT NULL,
+  `Apellido` VARCHAR(45) NOT NULL,
+  `Telefono` INT(9) NOT NULL,
+  `Administrador` VARCHAR(9) NOT NULL,
+  `Entrenador` VARCHAR(9) NOT NULL,
+  PRIMARY KEY (`DNI`),
+  UNIQUE KEY `DNI` (`DNI`)
+  )
+ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 -- -----------------------------------------------------
 -- Table `PadelDB`.`Clase`
@@ -50,12 +55,12 @@ CREATE TABLE IF NOT EXISTS `PadelDB`.`Clase` (
   `idClase` INT NOT NULL,
   `Pista` VARCHAR(45) NOT NULL,
   `Precio` INT(3) NOT NULL,
-  `Entrenador_DNI` VARCHAR(45) NOT NULL,
+  `Entrenador_DNI` VARCHAR(9) NOT NULL,
   PRIMARY KEY (`idClase`),
-  INDEX `fk_Clase_Entrenador1_idx` (`Entrenador_DNI` ASC),
-  CONSTRAINT `fk_Clase_Entrenador1`
+  INDEX `fk_Clase_Usuarios1_idx` (`Entrenador_DNI` ASC),
+  CONSTRAINT `fk_Clase_Ususarios1`
     FOREIGN KEY (`Entrenador_DNI`)
-    REFERENCES `PadelDB`.`Entrenador` (`DNI`)
+    REFERENCES `PadelDB`.`Usuarios` (`DNI`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -107,23 +112,6 @@ ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 
 -- -----------------------------------------------------
--- Table `PadelDB`.`Usuarios`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `PadelDB`.`Usuarios` (
-  `login` VARCHAR(9) NOT NULL,
-  `password` VARCHAR(128) NOT NULL,
-  `DNI` VARCHAR(9) NOT NULL,
-  `Nombre` VARCHAR(45) NOT NULL,
-  `Apellido` VARCHAR(45) NOT NULL,
-  `Telefono` INT(9) NOT NULL,
-  `Administrador` VARCHAR(9) NOT NULL,
-  PRIMARY KEY (`DNI`),
-  UNIQUE KEY `DNI` (`DNI`)
-  )
-ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
-
-
--- -----------------------------------------------------
 -- Table `PadelDB`.`Clase_has_Usuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PadelDB`.`Clase_has_Usuario` (
@@ -150,7 +138,7 @@ ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 CREATE TABLE IF NOT EXISTS `PadelDB`.`Reserva` (
   `idReserva` INT NOT NULL,
   `precio` INT(3) NOT NULL,
-  `Deportista_DNI` VARCHAR(9) NULL,
+  `Deportista_DNI` VARCHAR(9) NOT NULL,
   `Fecha/Hora` DATETIME(1) NOT NULL,
   PRIMARY KEY (`idReserva`),
   INDEX `fk_Reserva_Deportista1_idx` (`Deportista_DNI` ASC),
@@ -167,8 +155,10 @@ ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PadelDB`.`Campeonato` (
   `idCampeonato` INT NOT NULL,
-  `Período` DATETIME(2) NOT NULL,
-  `Limite Inscripcion` DATETIME(2) NOT NULL,
+  `Periodo` VARCHAR(23) NOT NULL,
+  `LimInscrip` DATETIME(2) NOT NULL,
+  `Categoria` VARCHAR(9) NOT NULL,
+  `Sexo` ENUM('Masculino', 'Femenino', 'Mixto') NOT NULL,
   PRIMARY KEY (`idCampeonato`))
 ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
@@ -176,17 +166,17 @@ ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 -- -----------------------------------------------------
 -- Table `PadelDB`.`Tabla de clasificación`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `PadelDB`.`Tabla de clasificación` (
-  `idTabla de clasificación` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `PadelDB`.`Tabla de clasificacion` (
+  `idTabla de clasificacion` INT NOT NULL,
   `Partidos Jugados` INT(3) NOT NULL,
   `Partidos Ganados` INT(3) NOT NULL,
   `Partidos Perdidos` INT(3) NOT NULL,
   `Partidos Empatados` INT(3) NULL,
-  `Puntuación` INT(3) NULL,
+  `Puntuacion` INT(3) NULL,
   `Campeonato_idCampeonato` INT NOT NULL,
-  PRIMARY KEY (`idTabla de clasificación`),
-  INDEX `fk_Tabla de clasificación_Campeonato1_idx` (`Campeonato_idCampeonato` ASC),
-  CONSTRAINT `fk_Tabla de clasificación_Campeonato1`
+  PRIMARY KEY (`idTabla de clasificacion`),
+  INDEX `fk_Tabla de clasificacion_Campeonato1_idx` (`Campeonato_idCampeonato` ASC),
+  CONSTRAINT `fk_Tabla de clasificacion_Campeonato1`
     FOREIGN KEY (`Campeonato_idCampeonato`)
     REFERENCES `PadelDB`.`Campeonato` (`idCampeonato`)
     ON DELETE NO ACTION
@@ -227,12 +217,12 @@ ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 CREATE TABLE IF NOT EXISTS `PadelDB`.`Parejas` (
   `idParejas` INT NOT NULL,
   `NombrePareja` VARCHAR(45) NOT NULL,
-  `Tabla de clasificación_idTabla de clasificación` INT NOT NULL,
+  `Tabla de clasificacion_idTabla de clasificacion` INT NOT NULL,
   PRIMARY KEY (`idParejas`),
-  INDEX `fk_Parejas_Tabla de clasificación1_idx` (`Tabla de clasificación_idTabla de clasificación` ASC),
-  CONSTRAINT `fk_Parejas_Tabla de clasificación1`
-    FOREIGN KEY (`Tabla de clasificación_idTabla de clasificación`)
-    REFERENCES `PadelDB`.`Tabla de clasificación` (`idTabla de clasificación`)
+  INDEX `fk_Parejas_Tabla de clasificacion1_idx` (`Tabla de clasificacion_idTabla de clasificacion` ASC),
+  CONSTRAINT `fk_Parejas_Tabla de clasificacion1`
+    FOREIGN KEY (`Tabla de clasificacion_idTabla de clasificacion`)
+    REFERENCES `PadelDB`.`Tabla de clasificacion` (`idTabla de clasificacion`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -259,7 +249,7 @@ CREATE TABLE IF NOT EXISTS `PadelDB`.`Usuarios_has_Partido` (
     ON UPDATE NO ACTION)
 ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
-
+/*
 -- -----------------------------------------------------
 -- Table `PadelDB`.`Categoría`
 -- -----------------------------------------------------
@@ -298,7 +288,7 @@ CREATE TABLE IF NOT EXISTS `PadelDB`.`Categoría_has_Parejas` (
     ON UPDATE NO ACTION)
 ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
-
+*/
 -- -----------------------------------------------------
 -- Table `PadelDB`.`Parejas_has_Usuarios`
 -- -----------------------------------------------------
@@ -324,6 +314,19 @@ ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 /*SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;*/
+
+/* INSERTS*/
+INSERT INTO `usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
+VALUES ('admin','admin','12345678A','Admin','istrador','666666666','TRUE','FALSE');
+
+INSERT INTO `usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
+VALUES ('entrenador','entrenador','12345678E','Coach','Lillo','666666667','FALSE','TRUE');
+
+
+
+
+
+
 
 
 /*INSERT INTO Usuarios_has_Partido (Usuarios_DNI, Partido_idPartido)
