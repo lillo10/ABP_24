@@ -30,13 +30,13 @@ class Campeonato_ADD{  // declaración de clase
 						<tdp>Periodo</tdp><tdp><input required type="text" id="Periodo" name="Periodo" size="23" maxlength="23"/></tdp>
 					</trp>
 					<tri>
-						<tdi>Limite de inscripcion</tdi><tdi><input required type="text" id="LimInscrip" name="LimInscrip" size="15" maxlength="9"/></tdi>
+						<tdi>Limite de inscripcion</tdi><tdi><input required type="date" id="LimInscrip" name="LimInscrip" size="15" maxlength="10"/></tdi>
 					</tri>
 					<trp>
 						<tdp>Categoria</tdp><tdp><input required type="text" id="Categoria" name="Categoria" size="10" maxlength="10"/></tdp>
 					</trp>
 					<tri>
-						<tdi>Sexo</tdi><tdi><input required type="text" id="ApellidosA" name="Apellidos" size="10" maxlength="10"/></tdi>
+						<tdi>Sexo</tdi><tdi><input required type="text" id="Sexo" name="Sexo" size="10" maxlength="10"/></tdi>
 					</tri><br/><br/>
 					<button onClick="document.getElementById('formularioAdd').submit()" name="orden" value="ADD"/><img src="../img/add.png" height="30px"/>
 				</table>

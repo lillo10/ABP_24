@@ -117,6 +117,9 @@ class Campeonato{
 					if(!$this->mysqli->query($sql)){
 						return 'Ha fallado el insertar al usuario';
 					}
+					else{
+						return 'Campeonato insertado correctamente';
+					}
 
 				}else{
 					return 'El idCampeonato introducido ya existe';
