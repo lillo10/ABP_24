@@ -138,16 +138,22 @@ ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 CREATE TABLE IF NOT EXISTS `PadelDB`.`Reserva` (
   `idReserva` INT NOT NULL,
   `precio` INT(3) NOT NULL,
-  `Deportista_DNI` VARCHAR(9) NOT NULL,
-  `Fecha/Hora` DATETIME(1) NOT NULL,
+  `Deportista_DNI` VARCHAR(9) NULL,
+  `Pista_idPistas` INT NOT NULL,
   PRIMARY KEY (`idReserva`),
   INDEX `fk_Reserva_Deportista1_idx` (`Deportista_DNI` ASC),
+  INDEX `fk_Reserva_Pista1_idx` (`Pista_idPistas` ASC),
   CONSTRAINT `fk_Reserva_Deportista1`
     FOREIGN KEY (`Deportista_DNI`)
     REFERENCES `PadelDB`.`Usuarios` (`DNI`)
     ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Reserva_Pista1`
+    FOREIGN KEY (`Pista_idPistas`)
+    REFERENCES `PadelDB`.`Pista` (`idPistas`)
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+ENGINE = InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 
 -- -----------------------------------------------------
@@ -325,7 +331,41 @@ VALUES ('entrenador','entrenador','12345678E','Coach','Lillo','666666667','FALSE
 INSERT INTO `campeonato`(`idCampeonato`, `Periodo`, `LimInscrip`, `Categoria`, `Sexo`) 
 VALUES ('CMP1','10/09/2018-30/09/2018','2018-09-05','1','Masculino');
 
+INSERT INTO `pista` (`idPistas`, `Disponibilidad`, `Fecha/Hora`) 
+VALUES (1, 'SI', '2018-11-01 09:00:00');
 
+INSERT INTO `pista` (`idPistas`, `Disponibilidad`, `Fecha/Hora`) 
+VALUES (1, 'SI', '2018-11-01 10:30:00');
+
+INSERT INTO `pista` (`idPistas`, `Disponibilidad`, `Fecha/Hora`) 
+VALUES (1, 'SI', '2018-11-02 09:00:00');
+
+INSERT INTO `pista` (`idPistas`, `Disponibilidad`, `Fecha/Hora`) 
+VALUES (1, 'SI', '2018-11-02 10:30:00');
+
+INSERT INTO `pista` (`idPistas`, `Disponibilidad`, `Fecha/Hora`) 
+VALUES (1, 'SI', '2018-11-03 09:00:00');
+
+INSERT INTO `pista` (`idPistas`, `Disponibilidad`, `Fecha/Hora`) 
+VALUES (1, 'SI', '2018-11-03 10:30:00');
+
+INSERT INTO `pista` (`idPistas`, `Disponibilidad`, `Fecha/Hora`) 
+VALUES (2, 'SI', '2018-11-01 12:00:00');
+
+INSERT INTO `pista` (`idPistas`, `Disponibilidad`, `Fecha/Hora`) 
+VALUES (2, 'SI', '2018-11-01 13:30:00');
+
+INSERT INTO `pista` (`idPistas`, `Disponibilidad`, `Fecha/Hora`) 
+VALUES (2, 'SI', '2018-11-02 12:00:00');
+
+INSERT INTO `pista` (`idPistas`, `Disponibilidad`, `Fecha/Hora`) 
+VALUES (2, 'SI', '2018-11-02 13:30:00');
+
+INSERT INTO `pista` (`idPistas`, `Disponibilidad`, `Fecha/Hora`) 
+VALUES (2, 'SI', '2018-11-03 12:00:00');
+
+INSERT INTO `pista` (`idPistas`, `Disponibilidad`, `Fecha/Hora`) 
+VALUES (2, 'SI', '2018-11-03 13:30:00');
 
 
 
