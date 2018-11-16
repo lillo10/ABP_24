@@ -23,7 +23,7 @@
 					<th colspan="12" > LISTA DE PISTAS 
 						<form action="../Controllers/Pista_CONTROLLER.php" method="post" id="formularioShowallPista" name="formularioShowallPista">
 							<button onclick="document.forms[0].submit" name="orden" value="SEARCH"> <img src="../img/search.png" height="30px"/> </button> 
-							<button onClick="document.forms[0].submit" name="orden" value="ADD">  <img src="../img/add.png" height="30px"/> </button>
+							<!-- <button onClick="document.forms[0].submit" name="orden" value="ADD">  <img src="../img/add.png" height="30px"/> </button> -->
 						</form>
 					</th> 
 					<tr>
