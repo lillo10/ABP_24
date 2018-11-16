@@ -19,19 +19,19 @@
 			<form method="POST" accept-charset="UTF-8" id="formularioEditPista" name="formularioEditPista" style="display: inline-block;" action="../Controllers/Pista_CONTROLLER.php">
 				<table class="formulario">
 					<tri>
-						<tdi><?php echo $this->lista[0];?></tdi>
+						<tdi> idPista </tdi>
 						<tdi><input required type="text" value="<?php echo $this->datos[0]; ?>" id="<?php echo $this->lista[0];?>" name="<?php echo $this->lista[0];?>" size="5" maxlength="5" /></tdi>
 					</tri>
 					<trp>
-						<tdp><?php echo $this->lista[1];?></tdp>
+						<tdp> Disponibilidad </tdp>
 						<tdp><input required type="text"  value="<?php echo $this->datos[1];?>" id="<?php echo $this->lista[1];?>" name="<?php echo $this->lista[1];?>" size="10" maxlength="10" value="<?php ?>"/></tdp>
 					</trp>
 					<tri>
-						<tdi><?php echo $this->lista[2];?></tdi>
+						<tdi> Fecha </tdi>
 						<tdi><input required type="date" value="<?php echo $this->datos[2];?>" id="<?php echo $this->lista[2];?>" name="<?php echo $this->lista[2];?>"/> </tdi>
 					</tri>
 					<trp>
-						<tdp><?php echo $this->lista[3];?></tdp>
+						<tdp> Hora </tdp>
 						<tdp><input required type="time" value="<?php echo $this->datos[3];?>" id="<?php echo $this->lista[3];?>" name="<?php echo $this->lista[3];?>" /></tdp>
 					</trp>
 					<br/><br/>
