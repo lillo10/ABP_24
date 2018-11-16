@@ -26,16 +26,16 @@ class Pista_SHOWCURRENT{
 					<th colspan="2" > DATOS DE PISTA </th>
 				</tr>
 				<tr>
-					<th><?php echo $this->lista[0];?></th><td><?php echo $this -> datos[0]; ?></td>
+					<th> idPista </th><td><?php echo $this -> datos[0]; ?></td>
 				</tr>
 				<tr>
-					<th><?php echo $this->lista[1];?></th><td><?php echo $this -> datos[1]; ?></td>
+					<th> Disponibilidad </th><td><?php echo $this -> datos[1]; ?></td>
 				</tr>
 				<tr>
-					<th><?php echo $this->lista[2];?></th><td><?php echo $this -> datos[2]; ?></td>
+					<th> Fecha </th><td><?php echo $this -> datos[2]; ?></td>
 				</tr>
 				<tr>
-					<th><?php echo $this->lista[3];?></th><td><?php echo $this -> datos[3]; ?></td>
+					<th> Hora </th><td><?php echo $this -> datos[3]; ?></td>
 				</tr>
 				<tr>
 					<th><?php echo 'Volver'; ?></th><td><a href="../Controllers/Pista_CONTROLLER.php"><img src="../img/return.png" height="27px"/></a></td>
