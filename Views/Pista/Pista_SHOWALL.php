@@ -28,11 +28,14 @@
 					</th> 
 					<tr>
 						<?php
-							for($i = 0; $i < count($this -> lista)-1; $i++){
+							/*for($i = 0; $i < count($this -> lista)-1; $i++){
 								echo "<th>" . $this -> lista[$i] . "</th>";
-							}
+							}*/
 						?>
-						<th></th>
+						<th> idPista </th>
+						<th> Disponibilidad</th>
+						<th> Fecha/Hora </th>
+						<th> Acciones </th>
 					</tr>
 				</thead>
 				<tbody> 
@@ -51,7 +54,7 @@
 									<input type="hidden" name="fechahora" value="<?php echo $fila[2]?>"/>
 									
 									<button onclick="document.forms[1].submit" name="orden" value="DELETE">  <img src="../img/erase.png" height="30px"/> </i> </button> 
-									<!-- <button onclick="document.forms[1].submit" name="orden" value="EDIT">  <img src="../img/edit.png" height="30px"/> </button>  -->
+									<button onclick="document.forms[1].submit" name="orden" value="EDIT">  <img src="../img/edit.png" height="30px"/> </button>  
 									<button onclick="document.forms[1].submit" name="orden" value="SHOWCURRENT">  <img src="../img/detail.png" height="30px"/> </button>
 								</form>
 							</td>
