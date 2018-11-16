@@ -18,22 +18,22 @@
 			<form method="POST" accept-charset="UTF-8" id="formularioAddPista" name="formularioAddPista" style="display: inline-block;" action="../Controllers/Pista_CONTROLLER.php">
 				<table class="formulario">
 					<tri>
-						<tdi><?php echo $this->lista[0];?></tdi>
+						<tdi> idPista </tdi>
 						<tdi><input required type="text" id="<?php echo $this->lista[0];?>" name="<?php echo $this->lista[0];?>" size="5" maxlength="5" /></tdi>
 					</tri>
 					<trp>
-						<tdp><?php echo $this->lista[1];?></tdp>
+						<tdp> Disponibilidad </tdp>
 						<tdp><select required id="<?php echo $this->lista[1];?>" name="<?php echo $this->lista[1];?>">
 							  <option value="SI"> SI </option>
 							  <option value="NO"> NO </option>
 						</select></tdp>
 					</trp>
 					<tri>
-						<tdi><?phP echo $this->lista[2];?></tdi>
+						<tdi> Fecha </tdi>
 						<tdi><input required type="date" id="<?php echo $this->lista[2];?>" name="<?php echo $this->lista[2];?>"  onkeydown="return false" /></tdi>
 					</tri>
 					<trp>
-						<tdp><?php echo $this->lista[3];?></tdp>
+						<tdp> Hora </tdp>
 						<tdp><select required id="<?php echo $this->lista[3];?>" name="<?php echo $this->lista[3];?>">
 							  <option value="9:00"> 9:00 </option>
 							  <option value="10:30"> 10:30 </option>
