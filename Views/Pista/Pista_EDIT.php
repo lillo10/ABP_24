@@ -18,22 +18,30 @@
 		<fieldset><legend class="TituloFormulario">Editar Pista</legend>
 			<form method="POST" accept-charset="UTF-8" id="formularioEditPista" name="formularioEditPista" style="display: inline-block;" action="../Controllers/Pista_CONTROLLER.php">
 				<table class="formulario">
+					<trp>
+						<tdp> idPista </tdp>
+						<tdp><input required type="text" value="<?php echo $this->datos[0]; ?>" id="<?php echo $this->lista[0];?>" name="<?php echo $this->lista[0];?>" size="5" maxlength="5" readonly /></tdp>
+					</trp>
 					<tri>
-						<tdi> idPista </tdi>
-						<tdi><input required type="text" value="<?php echo $this->datos[0]; ?>" id="<?php echo $this->lista[0];?>" name="<?php echo $this->lista[0];?>" size="5" maxlength="5" /></tdi>
+						<tdi> Número de Pista </tdi>
+						<tdi><input required type="text" value="<?php echo $this->datos[1];?>" id="<?php echo $this->lista[1];?>" name="<?php echo $this->lista[1];?>" size="5" maxlength="5" /></tdi>
 					</tri>
 					<trp>
 						<tdp> Disponibilidad </tdp>
-						<tdp><input required type="text"  value="<?php echo $this->datos[1];?>" id="<?php echo $this->lista[1];?>" name="<?php echo $this->lista[1];?>" size="10" maxlength="10" value="<?php ?>"/></tdp>
+						<tdp><input required type="text"  value="<?php echo $this->datos[2];?>" id="<?phpecho $this->lista[2];?>" name="<?php echo $this->lista[2];?>"  size="5" maxlength="5" /></tdp> 
 					</trp>
 					<tri>
 						<tdi> Fecha </tdi>
-						<tdi><input required type="date" value="<?php echo $this->datos[2];?>" id="<?php echo $this->lista[2];?>" name="<?php echo $this->lista[2];?>"/> </tdi>
+						<tdi><input required type="date" value="<?php echo $this->datos[3];?>" id="<?php echo $this->lista[3];?>" name="<?php echo $this->lista[3];?>"/> </tdi>
 					</tri>
 					<trp>
 						<tdp> Hora </tdp>
-						<tdp><input required type="time" value="<?php echo $this->datos[3];?>" id="<?php echo $this->lista[3];?>" name="<?php echo $this->lista[3];?>" /></tdp>
+						<tdp><input required type="time" value="<?php echo $this->datos[4];?>" id="<?php echo $this->lista[4];?>" name="<?php echo $this->lista[4];?>" /></tdp>
 					</trp>
+					<tri>
+						<tdi> Precio </tdi>
+						<tdi><input required type="text" value="<?php echo $this->datos[5];?>"  id="<?php echo $this->lista[5];?>" name="<?php echo $this->lista[5];?>" size="5" maxlength="5" /></tdi>
+					</tri>
 					<br/><br/>
 					<button type="submit" name="orden" value="EDIT"/><img src="../img/edit.png" height="30px"/>
 				</table>
