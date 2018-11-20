@@ -7,6 +7,7 @@
 	}
 	
 	include_once '../Models/PISTA.php';
+	include_once '../Models/RESERVA.php';
 	include '../Views/Pista/Pista_ADD.php';
 	include '../Views/Pista/Pista_SHOWALL.php';
 	include '../Views/Pista/Pista_SEARCH.php';
@@ -16,17 +17,22 @@
 	include '../Views/MESSAGE.php';
 	
 	function get_data_form(){
-
-		$idPista = $_REQUEST['idPista'];
+	
+		if(!isset($_REQUEST['idPistas'])){
+			$idPista = '';
+		}else{
+			$idPista = $_REQUEST['idPistas'];
+		}
+		$numPista = $_REQUEST['numPista'];
 		$disponibilidad = $_REQUEST['disponibilidad'];
 		$fecha = $_REQUEST['fecha'];
 		$hora = $_REQUEST['hora'];
-		
 		$hora = substr($hora,0,5);
+		$precio = $_REQUEST['precio'];
 		
 		$action = $_REQUEST['orden'];
 		
-		$pista = new Pista ($idPista, $disponibilidad, $fecha, $hora);
+		$pista = new Pista ($idPista, $numPista, $disponibilidad, $fecha, $hora, $precio);
 		
 		return $pista;
 	}
@@ -34,12 +40,11 @@
 	if (!isset($_REQUEST['orden'])){ 
 		$_REQUEST['orden'] = '';
 	}
-	//print_r($_REQUEST);
 	
 	switch ($_REQUEST['orden']){
 		case 'ADD':
 				if(count($_REQUEST) < 2){
-					$pista = new Pista_ADD( array('idPista','disponibilidad', 'fecha', 'hora'),'');
+					$pista = new Pista_ADD( array('idPista', 'numPista' ,'disponibilidad', 'fecha', 'hora', 'precio'),'');
 				}else{
 					$pista = get_data_form();
 					$datos = $pista->ADD();
@@ -47,33 +52,35 @@
 				}
 			break;
 			
-		case 'DELETE':		//Pendiente de revisar
-			if(count($_REQUEST) == 4){
-				$idPista = $_REQUEST['idPistas'];
-				$disponibilidad = $_REQUEST['disponibilidad'];
-				$fecha = $_REQUEST['fechahora'];
-				
-				$datos = explode(' ', $fecha);
-				
-				new Pista_DELETE( array('idPista','disponibilidad', 'fecha', 'hora'), array($idPista, $disponibilidad, $datos[0], $datos[1]),  '../Controllers/Pista_CONTROLLER.php');
-			}else{
-				$pista = get_data_form();
-				//print_r($pista);
-				$datos = $pista->DELETE();
-				//print_r($datos);
-				new Mensaje($datos, '../Controllers/Pista_CONTROLLER.php');
-			}
+		case 'DELETE1':	
+			$idPista = $_REQUEST['idPista'];
+			
+			$pista = new Pista($idPista, '','','','','');
+			$datos = $pista -> rellenaDatos();
+			$fechahora = explode(' ', $datos[3]);
+		
+			new Pista_DELETE( array('idPistas','numPista','disponibilidad', 'fecha', 'hora', 'precio'), array($datos[0], $datos[1], $datos[2], $fechahora[0], $fechahora[1], $datos[4]),  '../Controllers/Pista_CONTROLLER.php');
+
+			break;
+			
+		case 'DELETE2':		
+			$reserva = new Reserva('','',$_REQUEST['idPista']);
+			$pista = new Pista ($_REQUEST['idPista'],'','','','','');
+			$reserva -> borrarReservaDePista();
+			$datos = $pista->DELETE();
+			new Mensaje($datos, '../Controllers/Pista_CONTROLLER.php');
+		
 			break;
 			
 		case 'EDIT':
-			if(count($_REQUEST) < 5){
-				$idPista = $_REQUEST['idPistas'];
-				$disponibilidad = $_REQUEST['disponibilidad'];
-				$fecha = $_REQUEST['fechahora'];
+			if(count($_REQUEST) < 3){
+				$idPista = $_REQUEST['idPista'];
 				
-				$datos = explode(' ', $fecha);
-
-				new Pista_EDIT( array('idPista','disponibilidad', 'fecha', 'hora'), array($idPista, $disponibilidad, $datos[0], $datos[1]),  '../Controllers/Pista_CONTROLLER.php');			
+				$pista = new Pista($idPista, '','','','','');
+				$datos = $pista -> rellenaDatos();
+				$fechahora = explode(' ', $datos[3]);
+				
+				new Pista_EDIT( array('idPistas','numPista','disponibilidad', 'fecha', 'hora', 'precio'), array($datos[0], $datos[1], $datos[2], $fechahora[0], $fechahora[1], $datos[4]),  '../Controllers/Pista_CONTROLLER.php');
 			}else{
 				$pista = get_data_form();
 				$datos = $pista->EDIT();
@@ -84,24 +91,23 @@
 				
 		case 'SEARCH':
 			if(count($_REQUEST) < 2){
-				$pista = new Pista_SEARCH( array('idPista','disponibilidad', 'fecha', 'hora'),'');
+				$pista = new Pista_SEARCH( array('idPistas','numPista','disponibilidad', 'fecha', 'hora', 'precio'),'');
 			}else{
-				$Pista = get_data_form();
-				$datos = $Pista -> SEARCH();
-				$lista= array('idPista', 'disponibilidad', 'fechahora','');
+				$pista = get_data_form();
+				$datos = $pista -> SEARCH();
+				$lista= array('idPistas','numPista','disponibilidad', 'fecha', 'hora', 'precio');
 				new Pista_SHOWALL($lista, $datos, '');
 			}
 			break;
 		
 		case 'SHOWCURRENT':
-			if(count($_REQUEST) < 5){
-				$idPista = $_REQUEST['idPistas'];
-				$disponibilidad = $_REQUEST['disponibilidad'];
-				$fecha = $_REQUEST['fechahora'];
+			if(count($_REQUEST) < 3){
+				$idPista = $_REQUEST['idPista'];
 				
-				$datos = explode(' ', $fecha);
-				
-				new Pista_SHOWCURRENT( array('idPista','disponibilidad', 'fecha' , 'hora'), array($idPista, $disponibilidad, $datos[0], $datos[1]),  '../Controllers/Pista_CONTROLLER.php');
+				$pista = new Pista($idPista, '','','','','');
+				$datos = $pista -> rellenaDatos();
+				$fechahora = explode(' ', $datos[3]);
+				new Pista_SHOWCURRENT( array('idPistas','numPista','disponibilidad', 'fecha', 'hora', 'precio'), array($datos[0], $datos[1], $datos[2], $fechahora[0], $fechahora[1], $datos[4]),  '../Controllers/Pista_CONTROLLER.php');
 			}else{
 				$pista = get_data_form();
 				$datos = $pista->SHOWCURRENT();
@@ -110,9 +116,9 @@
 		break;
 		
 		default:
-				$pista = new Pista('','','','');
+				$pista = new Pista('','','','','','');
 				$datos = $pista->SHOWALL();
-				$lista= array('idPista', 'disponibilidad', 'fecha','hora');
+				$lista= array('idPista', 'numPistas','disponibilidad', 'fecha','hora', 'precio');
 				new Pista_SHOWALL($lista, $datos, '');
 						
 				break;
