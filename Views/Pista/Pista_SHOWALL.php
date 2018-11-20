@@ -33,8 +33,10 @@
 							}*/
 						?>
 						<th> idPista </th>
+						<th> Número de Pista </th>
 						<th> Disponibilidad</th>
 						<th> Fecha/Hora </th>
+						<th> Precio </th>
 						<th> Acciones </th>
 					</tr>
 				</thead>
@@ -49,11 +51,9 @@
 							}?>
 							<td> 
 								<form action="../Controllers/Pista_CONTROLLER.php" method="post" name="showall">
-									<input type="hidden" name="idPistas" value="<?php echo $fila[0]?>"/>
-									<input type="hidden" name="disponibilidad" value="<?php echo $fila[1]?>"/>
-									<input type="hidden" name="fechahora" value="<?php echo $fila[2]?>"/>
+									<input type="hidden" name="idPista" value="<?php echo $fila[0]; ?>"/>
 									
-									<button onclick="document.forms[1].submit" name="orden" value="DELETE">  <img src="../img/erase.png" height="30px"/> </i> </button> 
+									<button onclick="document.forms[1].submit" name="orden" value="DELETE1">  <img src="../img/erase.png" height="30px"/> </i> </button> 
 									<button onclick="document.forms[1].submit" name="orden" value="EDIT">  <img src="../img/edit.png" height="30px"/> </button>  
 									<button onclick="document.forms[1].submit" name="orden" value="SHOWCURRENT">  <img src="../img/detail.png" height="30px"/> </button>
 								</form>
