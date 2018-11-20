@@ -28,20 +28,27 @@ class Pista_DELETE{
 					<th> idPista </th><td><?php echo $this -> datos[0]; ?></td>
 				</tr>
 				<tr>
-					<th> Disponibilidad </th><td><?php echo $this -> datos[1]; ?></td>
+					<th> Número de Pista </th><td><?php echo $this -> datos[1]; ?></td>
 				</tr>
 				<tr>
-					<th> Fecha </th><td><?php echo $this -> datos[2]; ?></td>
+					<th> Disponibilidad </th><td><?php echo $this -> datos[2]; ?></td>
 				</tr>
 				<tr>
-					<th> Hora </th><td><?php echo $this -> datos[3]; ?></td>
+					<th> Fecha </th><td><?php echo $this -> datos[3]; ?></td>
+				</tr>
+				<tr>
+					<th> Hora </th><td><?php echo $this -> datos[4]; ?></td>
+				</tr>
+				<tr>
+					<th> Precio </th><td><?php echo $this -> datos[5]; ?></td>
 				</tr>
 				<tr>
 					<th> Acción </th><td>
-						<input type="hidden" name="idPista" value="<?php echo $this -> datos[0]?>"/>
-						<input type="hidden" name="fecha" value="<?php echo $this -> datos[2]?>"/>
-						<input type="hidden" name="hora" value="<?php echo $this -> datos[3]?>"/>
-					<button onClick="submit" type="submit" name="orden" value="DELETE"/><img src="../img/erase.png" height="20px"/></td>
+					<form>
+						<input type="hidden" name="idPista"	value="<?php echo $this -> datos[0]?>"/>
+
+					<button onClick="submit" type="submit" name="orden" value="DELETE2"/><img src="../img/erase.png" height="20px"/></form></td>
+					
 				</tr>
 				<tr>
 					<th> Volver </th><td><a href="../Controllers/Pista_CONTROLLER.php"><img src="../img/return.png" height="27px"/></a></td>
