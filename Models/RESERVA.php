@@ -30,8 +30,6 @@
 			
 			$this -> login = $login;
 			$this -> idPista = $idPista;
-			
-			
 		}
 		
 		function RESERVAR(){
@@ -44,7 +42,7 @@
 			}else{
 				if($resultado->num_rows == 0){
 					$sql = "INSERT INTO reserva (idReserva, Deportista_login, Pista_idPistas) VALUES ('$this->idReserva', '$this->login', '$this->idPista')";
-					//echo $sql;
+					
 					if(!$this->mysqli->query($sql)){
 						return "Error en la inserción";
 					}else{
@@ -76,7 +74,7 @@
 		function SEARCH(){
 			
 			$sql = "SELECT * FROM `reserva` WHERE `idReserva` = '".$this -> idReserva."' ";
-		//echo $sql;
+		
 			$resultado = $this->mysqli->query($sql);
 			
 			if(!$resultado || $resultado->num_rows == 0){
