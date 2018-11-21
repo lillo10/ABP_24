@@ -344,14 +344,122 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;*/
 
 /* INSERTS*/
+/*Usuarios*/
 INSERT INTO `usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
 VALUES ('admin','admin','12345678A','Admin','istrador','666666666','TRUE','FALSE');
 
 INSERT INTO `usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
 VALUES ('entrenador','entrenador','12345678E','Coach','Lillo','666666667','FALSE','TRUE');
 
+INSERT INTO `usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
+VALUES ('angel','angel','12345673E','Angel','Lillo','646666667','FALSE','FALSE');
+
+INSERT INTO `usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
+VALUES ('jorge','jorge','12345672E','Jorge','Maza','646662667','FALSE','FALSE');
+
+INSERT INTO `usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
+VALUES ('fran','fran','12343673E','Fran','Gomez','646616667','FALSE','FALSE');
+
+INSERT INTO `usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
+VALUES ('abraham','abraham','12145673E','Abraham','Arce','646666867','FALSE','FALSE');
+
+INSERT INTO `usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
+VALUES ('adrian','adrian','12395673E','Adrian','Carballido','646676667','FALSE','FALSE');
+
+INSERT INTO `usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
+VALUES ('juan','juan','92345673E','Juan','Amil','645566667','FALSE','FALSE');
+
+
+/*Campeonatos*/
+/*1*/
 INSERT INTO `campeonato`(`idCampeonato`, `Periodo`, `LimInscrip`, `Categoria`, `Sexo`) 
-VALUES ('CMP1','10/09/2018-30/09/2018','2018-09-05','1','Masculino');
+VALUES ('CMP1MA1','10/09/2018-30/09/2018','2018-09-05','1','Masculino');
+INSERT INTO `campeonato`(`idCampeonato`, `Periodo`, `LimInscrip`, `Categoria`, `Sexo`) 
+VALUES ('CMP1F1','10/09/2018-30/09/2018','2018-09-05','1','Femenino');
+/*Inscritos*/
+INSERT INTO `Tablaclasificacion`(`NombrePareja`, `Grupo`, `PartidosJugados`, `PartidosGanados`, `PartidosPerdidos`,`PartidosEmpatados`,`Puntuacion`,`idCampeonato`) 
+VALUES ('Admin/admin2',1,0,0,0,0,0,'CMP1MA1');
+INSERT INTO `Tablaclasificacion`(`NombrePareja`, `Grupo`, `PartidosJugados`, `PartidosGanados`, `PartidosPerdidos`,`PartidosEmpatados`,`Puntuacion`,`idCampeonato`) 
+VALUES ('Entrenador/entrenador2',1,0,0,0,0,0,'CMP1MA1');
+INSERT INTO `Tablaclasificacion`(`NombrePareja`, `Grupo`, `PartidosJugados`, `PartidosGanados`, `PartidosPerdidos`,`PartidosEmpatados`,`Puntuacion`,`idCampeonato`) 
+VALUES ('Angel/Cristian',1,0,0,0,0,0,'CMP1MA1');
+INSERT INTO `Tablaclasificacion`(`NombrePareja`, `Grupo`, `PartidosJugados`, `PartidosGanados`, `PartidosPerdidos`,`PartidosEmpatados`,`Puntuacion`,`idCampeonato`) 
+VALUES ('Jorge/Pedro',1,0,0,0,0,0,'CMP1MA1');
+INSERT INTO `Tablaclasificacion`(`NombrePareja`, `Grupo`, `PartidosJugados`, `PartidosGanados`, `PartidosPerdidos`,`PartidosEmpatados`,`Puntuacion`,`idCampeonato`) 
+VALUES ('Fran/Antonio',2,0,0,0,0,0,'CMP1MA1');
+INSERT INTO `Tablaclasificacion`(`NombrePareja`, `Grupo`, `PartidosJugados`, `PartidosGanados`, `PartidosPerdidos`,`PartidosEmpatados`,`Puntuacion`,`idCampeonato`) 
+VALUES ('Abraham/Jesus',2,0,0,0,0,0,'CMP1MA1');
+INSERT INTO `Tablaclasificacion`(`NombrePareja`, `Grupo`, `PartidosJugados`, `PartidosGanados`, `PartidosPerdidos`,`PartidosEmpatados`,`Puntuacion`,`idCampeonato`) 
+VALUES ('Adrian/Alfredo',2,0,0,0,0,0,'CMP1MA1');
+INSERT INTO `Tablaclasificacion`(`NombrePareja`, `Grupo`, `PartidosJugados`, `PartidosGanados`, `PartidosPerdidos`,`PartidosEmpatados`,`Puntuacion`,`idCampeonato`) 
+VALUES ('Juan/Ivan',2,0,0,0,0,0,'CMP1MA1');
+
+/*2*/
+INSERT INTO `campeonato`(`idCampeonato`, `Periodo`, `LimInscrip`, `Categoria`, `Sexo`) 
+VALUES ('CMP2MA1','10/12/2018-2/01/2019','2018-12-05','1','Masculino');
+INSERT INTO `campeonato`(`idCampeonato`, `Periodo`, `LimInscrip`, `Categoria`, `Sexo`) 
+VALUES ('CMP2F1','10/09/2018-30/09/2018','2018-12-05','1','Femenino');
+INSERT INTO `campeonato`(`idCampeonato`, `Periodo`, `LimInscrip`, `Categoria`, `Sexo`) 
+VALUES ('CMP2MI1','10/09/2018-30/09/2018','2018-12-05','1','Mixto');
+INSERT INTO `campeonato`(`idCampeonato`, `Periodo`, `LimInscrip`, `Categoria`, `Sexo`) 
+VALUES ('CMP2MA2','10/12/2018-2/01/2019','2018-12-05','2','Masculino');
+INSERT INTO `campeonato`(`idCampeonato`, `Periodo`, `LimInscrip`, `Categoria`, `Sexo`) 
+VALUES ('CMP2F2','10/09/2018-30/09/2018','2018-12-05','2','Femenino');
+INSERT INTO `campeonato`(`idCampeonato`, `Periodo`, `LimInscrip`, `Categoria`, `Sexo`) 
+VALUES ('CMP2MI2','10/09/2018-30/09/2018','2018-12-05','2','Mixto');
+INSERT INTO `campeonato`(`idCampeonato`, `Periodo`, `LimInscrip`, `Categoria`, `Sexo`) 
+VALUES ('CMP2MA3','10/12/2018-2/01/2019','2018-12-05','3','Masculino');
+INSERT INTO `campeonato`(`idCampeonato`, `Periodo`, `LimInscrip`, `Categoria`, `Sexo`) 
+VALUES ('CMP2F3','10/09/2018-30/09/2018','2018-12-05','3','Femenino');
+INSERT INTO `campeonato`(`idCampeonato`, `Periodo`, `LimInscrip`, `Categoria`, `Sexo`) 
+VALUES ('CMP2MI3','10/09/2018-30/09/2018','2018-12-05','3','Mixto');
+/*Inscristos*/
+INSERT INTO `Tablaclasificacion`(`NombrePareja`, `Grupo`, `PartidosJugados`, `PartidosGanados`, `PartidosPerdidos`,`PartidosEmpatados`,`Puntuacion`,`idCampeonato`) 
+VALUES ('Admin/admin2',2,3,3,0,0,9,'CMP2MA1');
+INSERT INTO `Tablaclasificacion`(`NombrePareja`, `Grupo`, `PartidosJugados`, `PartidosGanados`, `PartidosPerdidos`,`PartidosEmpatados`,`Puntuacion`,`idCampeonato`) 
+VALUES ('Entrenador/entrenador2',2,3,0,2,1,1,'CMP2MA1');
+INSERT INTO `Tablaclasificacion`(`NombrePareja`, `Grupo`, `PartidosJugados`, `PartidosGanados`, `PartidosPerdidos`,`PartidosEmpatados`,`Puntuacion`,`idCampeonato`) 
+VALUES ('Angel/Cristian',2,3,0,2,1,1,'CMP2MA1');
+INSERT INTO `Tablaclasificacion`(`NombrePareja`, `Grupo`, `PartidosJugados`, `PartidosGanados`, `PartidosPerdidos`,`PartidosEmpatados`,`Puntuacion`,`idCampeonato`) 
+VALUES ('Jorge/Pedro',2,3,2,1,0,6,'CMP2MA1');
+
+INSERT INTO `Tablaclasificacion`(`NombrePareja`, `Grupo`, `PartidosJugados`, `PartidosGanados`, `PartidosPerdidos`,`PartidosEmpatados`,`Puntuacion`,`idCampeonato`) 
+VALUES ('Fran/Antonio',2,3,3,0,0,9,'CMP2MA1');
+INSERT INTO `Tablaclasificacion`(`NombrePareja`, `Grupo`, `PartidosJugados`, `PartidosGanados`, `PartidosPerdidos`,`PartidosEmpatados`,`Puntuacion`,`idCampeonato`) 
+VALUES ('Abraham/Jesus',2,3,0,2,1,1,'CMP2MA1');
+INSERT INTO `Tablaclasificacion`(`NombrePareja`, `Grupo`, `PartidosJugados`, `PartidosGanados`, `PartidosPerdidos`,`PartidosEmpatados`,`Puntuacion`,`idCampeonato`) 
+VALUES ('Adrian/Alfredo',2,3,0,2,1,1,'CMP2MA1');
+INSERT INTO `Tablaclasificacion`(`NombrePareja`, `Grupo`, `PartidosJugados`, `PartidosGanados`, `PartidosPerdidos`,`PartidosEmpatados`,`Puntuacion`,`idCampeonato`) 
+VALUES ('Juan/Ivan',2,3,2,1,0,6,'CMP2MA1');
+/*Enfrentamientos*/
+INSERT INTO `Enfrentamiento`(`Fecha`, `Grupo`, `Pareja1`, `Pareja2`, `Resultado1`,`idCampeonato`) 
+VALUES ('2018-12-10',1,'Admin/admin2','Entrenador/entrenador2',1,'CMP2MA1');
+INSERT INTO `Enfrentamiento`(`Fecha`, `Grupo`, `Pareja1`, `Pareja2`, `Resultado1`,`idCampeonato`) 
+VALUES ('2018-12-11',1,'Admin/admin2','Angel/Cristian',1,'CMP2MA1');
+INSERT INTO `Enfrentamiento`(`Fecha`, `Grupo`, `Pareja1`, `Pareja2`, `Resultado1`,`idCampeonato`) 
+VALUES ('2018-12-12',1,'Admin/admin2','Jorge/Pedro',1,'CMP2MA1');
+INSERT INTO `Enfrentamiento`(`Fecha`, `Grupo`, `Pareja1`, `Pareja2`, `Resultado1`,`idCampeonato`) 
+VALUES ('2018-12-13',1,'Entrenador/entrenador2','Angel/Cristian','X','CMP2MA1');
+INSERT INTO `Enfrentamiento`(`Fecha`, `Grupo`, `Pareja1`, `Pareja2`, `Resultado1`,`idCampeonato`) 
+VALUES ('2018-12-14',1,'Entrenador/entrenador2','Jorge/Pedro',2,'CMP2MA1');
+INSERT INTO `Enfrentamiento`(`Fecha`, `Grupo`, `Pareja1`, `Pareja2`, `Resultado1`,`idCampeonato`) 
+VALUES ('2018-12-15',1,'Angel/Cristian','Jorge/Pedro',2,'CMP2MA1');
+
+INSERT INTO `Enfrentamiento`(`Fecha`, `Grupo`, `Pareja1`, `Pareja2`, `Resultado1`,`idCampeonato`) 
+VALUES ('2018-12-10',2,'Fran/Antonio','Abraham/Jesus',1,'CMP2MA1');
+INSERT INTO `Enfrentamiento`(`Fecha`, `Grupo`, `Pareja1`, `Pareja2`, `Resultado1`,`idCampeonato`) 
+VALUES ('2018-12-11',2,'Fran/Antonio','Adrian/Alfredo',1,'CMP2MA1');
+INSERT INTO `Enfrentamiento`(`Fecha`, `Grupo`, `Pareja1`, `Pareja2`, `Resultado1`,`idCampeonato`) 
+VALUES ('2018-12-12',2,'Fran/Antonio','Juan/Ivan',1,'CMP2MA1');
+INSERT INTO `Enfrentamiento`(`Fecha`, `Grupo`, `Pareja1`, `Pareja2`, `Resultado1`,`idCampeonato`) 
+VALUES ('2018-12-13',2,'Abraham/Jesus','Adrian/Alfredo','X','CMP2MA1');
+INSERT INTO `Enfrentamiento`(`Fecha`, `Grupo`, `Pareja1`, `Pareja2`, `Resultado1`,`idCampeonato`) 
+VALUES ('2018-12-14',2,'Abraham/Jesus','Juan/Ivan',2,'CMP2MA1');
+INSERT INTO `Enfrentamiento`(`Fecha`, `Grupo`, `Pareja1`, `Pareja2`, `Resultado1`,`idCampeonato`) 
+VALUES ('2018-12-15',2,'Adrian/Alfredo','Juan/Ivan',2,'CMP2MA1');
+
+
+
 
 /*Datos Pista1*/
 INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
