@@ -174,8 +174,9 @@ class Campeonato_SHOWCURRENT{  // declaración de clase
 				$i++;
 			}?>
 			</table>
+			<br><br><br><br><br><br><br><br>
 			</div>
-			<br><br><br><br>
+			
 <?php		include '../Views/Footer.php';	
 
 } 

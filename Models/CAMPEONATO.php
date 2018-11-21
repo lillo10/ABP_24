@@ -229,11 +229,11 @@ class Campeonato{
 		$idCampeonato = mysqli_real_escape_string($this->mysqli, $this->idCampeonato);	
 		
 		//Tabla clasificacion grupo 1
-		$sql = "SELECT * FROM Tablaclasificacion WHERE idCampeonato = '$idCampeonato' AND Grupo = 1 ORDER BY Puntuacion";
+		$sql = "SELECT * FROM Tablaclasificacion WHERE idCampeonato = '$idCampeonato' AND Grupo = 1 ORDER BY Puntuacion DESC";
 		$clasg1 = $this->mysqli->query($sql);
 
 		//Tabla clasificacion grupo 2
-		$sql = "SELECT * FROM Tablaclasificacion WHERE idCampeonato = '$idCampeonato' AND Grupo = 2 ORDER BY Puntuacion";
+		$sql = "SELECT * FROM Tablaclasificacion WHERE idCampeonato = '$idCampeonato' AND Grupo = 2 ORDER BY Puntuacion DESC";
 		$clasg2 = $this->mysqli->query($sql);
 
 		//Enfrentamientos grupo 1
