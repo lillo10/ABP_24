@@ -62,7 +62,7 @@
 					}?>
 				</tbody>
 			</table>
-			<br><br> <a href='../Controllers/Reserva_CONTROLLER.php'> Volver </a> 
+			<br><br> <a href='../Controllers/Index_CONTROLLER.php'> Volver </a> 
 		</section>
 
 <?php
