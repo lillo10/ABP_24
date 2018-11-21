@@ -54,7 +54,7 @@
 					<button type="submit" name="orden" value="ADD"/><img src="../img/add.png" height="30px"/>
 				</table>
 			</form>
-			<br><br> <a href='../Controllers/Pista_CONTROLLER.php'>Volver </a> 
+			<br><br> <a href='../Controllers/Index_CONTROLLER.php'>Volver </a> 
 		</fieldset>
 		</div><?php
 		include '../Views/Footer.php';
