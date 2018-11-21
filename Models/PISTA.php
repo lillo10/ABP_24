@@ -101,7 +101,7 @@
 			
 			if($resultado->num_rows == 1){
 				$sql = "DELETE FROM pista WHERE (idPistas = '".$this -> idPista."')";
-				//echo $sql;
+				
 				$this->mysqli->query($sql);
 				
 				return "Borrado realizado";
@@ -109,8 +109,6 @@
 				return "La pista no existe";
 			}
 		}
-		
-		
 		
 		function SEARCH(){
 			
@@ -158,7 +156,6 @@
 		
 		function SEARCH_RESERVA(){
 			$sql = "SELECT * FROM pista WHERE `Fecha/Hora` LIKE '%".$this -> fechahora."%' and Disponibilidad = 'SI' ";
-			//echo $sql;
 			
 			$resultado = $this->mysqli->query($sql);
 			
