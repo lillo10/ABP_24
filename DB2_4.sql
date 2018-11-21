@@ -223,7 +223,6 @@ CREATE TABLE IF NOT EXISTS `PadelDB`.`Enfrentamiento` (
   `Pareja2` VARCHAR(45) NOT NULL,
   `Resultado1` ENUM('1', '2', 'X') NOT NULL,
   `idCampeonato` VARCHAR(10) NOT NULL,
-  `Pistas_idPistas` INT ,
   PRIMARY KEY (`idCampeonato`,`Pareja1`,`Pareja2`)/*,
   INDEX `fk_Enfrentamiento_Campeonato1_idx` (`Campeonato_idCampeonato` ASC),
   INDEX `fk_Enfrentamiento_Pistas1_idx` (`Pistas_idPistas` ASC),
