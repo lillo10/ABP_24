@@ -6,17 +6,11 @@
 class Campeonato_SHOWALL{  // declaración de clase
 	
 	var $resultado;//Las tuplas a mostrar
-	var $datosAMostrar;//Los datos de esas tuplas a mostrar
+	
 
 	// declaración constructor de la clase
 	// se inicializa con los valores del formulario y el valor del botón submit pulsado
-	function __construct($respuesta, $datosAMostrar){
-		$datosAMostrarS = array();
-		
-		$datosAMostrarS["EDIT"] = array_search('EDIT', $datosAMostrar, true);		
-		
-		
-		$this->datosAMostrar = $datosAMostrarS;
+	function __construct($respuesta){
 		$this->resultado = $respuesta;
 		$this->toString();
 	} // fin del constructor
@@ -55,10 +49,14 @@ class Campeonato_SHOWALL{  // declaración de clase
 							
 						<td>
 							<input type='hidden' id="oculto<?php echo $i; ?>" name='orden' value=''/>
+							<img onMouseOver="document.getElementById('oculto<?php echo $i; ?>').value='INSCRIBIRSE'" onClick="document.getElementById('formularioOpcion<?php echo $i; ?>').submit()" src='../img/register.png' height='20px;' style='cursor: pointer'/>
 							<img onMouseOver="document.getElementById('oculto<?php echo $i; ?>').value='SHOWCURRENT'" onClick="document.getElementById('formularioOpcion<?php echo $i; ?>').submit()" src='../img/detail.png' height='20px;' style='cursor: pointer'/>
 							<?php
 							if(esAdmin()){ //Si tiene permisos (ADMIN)?> 
 							<img onMouseOver="document.getElementById('oculto<?php echo $i; ?>').value='DELETE'" onClick="document.getElementById('formularioOpcion<?php echo $i; ?>').submit()" src='../img/erase.png' height='20px;' style='cursor: pointer'/>
+						<?php }
+							if(esAdmin()){ //Si tiene permisos (ADMIN)?> 
+							<img onMouseOver="document.getElementById('oculto<?php echo $i; ?>').value='GENPARTIDOS'" onClick="document.getElementById('formularioOpcion<?php echo $i; ?>').submit()" src='../img/genpartidos.png' height='20px;' style='cursor: pointer'/>
 						<?php } ?>
 						</td> 
 					</tr>

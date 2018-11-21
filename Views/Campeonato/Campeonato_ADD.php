@@ -1,7 +1,5 @@
 <?php
-/* Clase vista add, con el fin de poder añadir un usuario a la BD
-	
-*/
+
 	
 class Campeonato_ADD{  // declaración de clase
 
@@ -32,12 +30,9 @@ class Campeonato_ADD{  // declaración de clase
 					<tri>
 						<tdi>Limite de inscripcion</tdi><tdi><input required type="date" id="LimInscrip" name="LimInscrip" size="15" maxlength="10"/></tdi>
 					</tri>
-					<trp>
-						<tdp>Categoria</tdp><tdp><input required type="text" id="Categoria" name="Categoria" size="10" maxlength="10"/></tdp>
-					</trp>
-					<tri>
-						<tdi>Sexo</tdi><tdi><input required type="text" id="Sexo" name="Sexo" size="10" maxlength="10"/></tdi>
-					</tri><br/><br/>
+					<input required type="hidden" value=" " id="Categoria" name="Categoria" size="10" maxlength="10"/>
+					<input required type="hidden" value=" " id="Sexo" name="Sexo" size="10" maxlength="10"/>
+					<br/><br/>
 					<button onClick="document.getElementById('formularioAdd').submit()" name="orden" value="ADD"/><img src="../img/add.png" height="30px"/>
 				</table>
 			</form>

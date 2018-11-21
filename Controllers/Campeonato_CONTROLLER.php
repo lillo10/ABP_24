@@ -10,11 +10,13 @@
 	
 	
 	include_once '../Models/CAMPEONATO.php';
+	include_once '../Models/TABLACLASIFICACION.php';
 	include '../Views/Campeonato/Campeonato_ADD.php';
 	include '../Views/Campeonato/Campeonato_EDIT.php';
 	include '../Views/Campeonato/Campeonato_DELETE.php';
 	include '../Views/Campeonato/Campeonato_SHOWCURRENT.php';
 	include '../Views/Campeonato/Campeonato_SHOWALL.php';
+	include '../Views/TablaClasificacion/TablaClasificacion_ADD.php';
 	include '../Views/MESSAGE.php';
 	
 function get_data_form(){
@@ -31,9 +33,9 @@ function get_data_form(){
 }
 	
 
-if (!isset($_REQUEST['orden'])){ //si no viene del formulario, no existe array POST
+/*if (!isset($_REQUEST['orden'])){ //si no viene del formulario, no existe array POST
 	$_REQUEST['orden'] = 'SHOWALL';
-}
+}*/
 		switch ($_REQUEST['orden']){
 			
 			case 'ADD':
@@ -73,22 +75,47 @@ if (!isset($_REQUEST['orden'])){ //si no viene del formulario, no existe array P
 			break;
 				
 			case 'SHOWCURRENT':
-					if(!$_POST){//Si GET
 						$campeonato = new Campeonato($_REQUEST['idCampeonato'],'','','','');//Coger clave del campeonato
 						$respuesta = $campeonato->SHOWCURRENT();
-						if(!is_string($respuesta)){//NO debería ser posible pedir un showcurrent de algo no existente pero si esp osible retornará un string, así que si no es un string es un campeonato
-							$campeonato->_getDatosGuardados();
-							new Campeonato_SHOWCURRENT($campeonato);//Mostrar al usuario rellenado
-						}else{//sino
-							new Mensaje($respuesta, '../Controllers/Campeonato_CONTROLLER.php');//Mensaje de error, que hay muchos
-						}
-					}				
+						new Campeonato_SHOWCURRENT($respuesta);//Mostrar al usuario rellenado
 			break;
 				
 			case 'SHOWALL':
 					$campeonato = new Campeonato('','','','','');//No necesitamos campeonato para buscar (pero sí para acceder a la BD)
 					$respuesta = $campeonato->SHOWALL();//Todos los datos de la BD estarán aqúi
-					new Campeonato_SHOWALL($respuesta, array('','EDIT'));//Le pasamos todos los datos de la BD			
+					new Campeonato_SHOWALL($respuesta);//Le pasamos todos los datos de la BD			
+			break;
+
+			case 'INSCRIBIRSE':
+					if(!$_POST){
+						$idCampeonato = $_REQUEST['idCampeonato'];
+						new TablaClasificacion_ADD($idCampeonato);
+					}
+					else{
+						$idCampeonato = $_REQUEST['idCampeonato'];
+						$NombrePareja = $_REQUEST['NombrePareja'];
+						$campeonato = new Campeonato($idCampeonato,'','','','');
+						$respuesta = $campeonato->INSCRIBIRSE();
+						$tablaclasificacion = new TablaClasificacion($idCampeonato, $NombrePareja);
+						$res = $tablaclasificacion->ADD();
+						if ($res == true) {
+							new Mensaje($respuesta, '../Controllers/Campeonato_CONTROLLER.php');
+						}
+						else {
+							new Mensaje("Error en la inscripcion", '../Controllers/Campeonato_CONTROLLER.php');
+						}
+					}
+					
+					
+			break;
+
+			case 'GENPARTIDOS':
+						$idCampeonato = $_REQUEST['idCampeonato'];
+						$campeonato = new Campeonato($idCampeonato,'','','','');
+						$respuesta = $campeonato->GENPARTIDOS();
+						new Mensaje($respuesta, '../Controllers/Campeonato_CONTROLLER.php');
+						
+					
 			break;
 				
 			default:// default, se hace un showall
