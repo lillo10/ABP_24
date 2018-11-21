@@ -107,13 +107,14 @@
 				$pista = new Pista($idPista, '','','','','');
 				$datos = $pista -> rellenaDatos();
 				$fechahora = explode(' ', $datos[3]);
+				
 				new Pista_SHOWCURRENT( array('idPistas','numPista','disponibilidad', 'fecha', 'hora', 'precio'), array($datos[0], $datos[1], $datos[2], $fechahora[0], $fechahora[1], $datos[4]),  '../Controllers/Pista_CONTROLLER.php');
 			}else{
 				$pista = get_data_form();
 				$datos = $pista->SHOWCURRENT();
 				new Mensaje($datos, '../Controllers/Pista_CONTROLLER.php');
 			}
-		break;
+			break;
 		
 		default:
 				$pista = new Pista('','','','','','');
