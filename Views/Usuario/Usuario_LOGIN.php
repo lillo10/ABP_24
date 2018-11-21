@@ -23,11 +23,11 @@ class Usuario_LOGIN{  // declaración de clase
 			<form method="POST" accept-charset="UTF-8" id="formularioLogin" name="formularioLogin" style="display: inline-block;" action="../Controllers/Login_CONTROLLER.php">
 				<table class="formulario">
 					<tri>
-						<tdi>Login</tdi><tdi><input required type="text" id="loginA" name="login" size="20" maxlength="15" onBlur="validarLogin('loginA')"/></tdi><tdi><img id="loginABot" height="20px" src="../img/red-button.png"/></tdi><tdi><texto-correccion id="loginABotText"></texto-correccion></tdi>
+						<tdi>Login</tdi><tdi><input required type="text" id="loginA" name="login" size="20" maxlength="15" /></tdi>
 
 					</tri>
 					<trp>
-						<tdp>Contraseña</tdp><tdp><input required type="password" id="passwordA" name="password" size="25" maxlength="20" onBlur="validarPassword(this)"/></tdp><tdp><img id="passwordABot" height="20px" src="../img/red-button.png"/></tdp><tdp><texto-correccion id="passwordABotText"></texto-correccion></tdp>
+						<tdp>Contraseña</tdp><tdp><input required type="password" id="passwordA" name="password" size="25" maxlength="20" /></tdp>
 
 					</trp>
 					<button onClick="document.getElementById('formularioLogin').submit()" type="submit" name="orden" value="LOGIN"/><img src="../img/login.png" height="30px"/>
