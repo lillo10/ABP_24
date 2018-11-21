@@ -50,6 +50,7 @@
 							<td> 
 								<form action="../Controllers/Reserva_CONTROLLER.php" method="post" name="showall">
 									<input type="hidden" name="idReserva" value="<?php echo $fila[0]?>"/>
+									<input type="hidden" name="idPista" value="<?php echo $fila[2]?>"/>
 									
 									<button onclick="document.forms[1].submit" name="orden" value="DELETE1">  <img src="../img/erase.png" height="30px"/> </i> </button> 
 									<button onclick="document.forms[1].submit" name="orden" value="SHOWCURRENT">  <img src="../img/detail.png" height="30px"/> </button>
