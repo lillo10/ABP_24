@@ -99,7 +99,7 @@ ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 -- -----------------------------------------------------
 -- Table `PadelDB`.`Grupo`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `PadelDB`.`Grupo` (
+/*CREATE TABLE IF NOT EXISTS `PadelDB`.`Grupo` (
   `idGrupo` INT NOT NULL,
   `Grupocol` VARCHAR(45) NOT NULL,
   `Partido_idPartido` INT NOT NULL,
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `PadelDB`.`Grupo` (
     REFERENCES `PadelDB`.`Partido` (`idPartido`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;*/
 
 
 -- -----------------------------------------------------
@@ -217,7 +217,8 @@ ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 -- Table `PadelDB`.`Enfrentamiento`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PadelDB`.`Enfrentamiento` (
-  `Fecha/Hora` DATETIME(1) NOT NULL,
+  `Fecha` DATE NOT NULL,
+  `Grupo` INT(1) NOT NULL,
   `Pareja1` VARCHAR(45) NOT NULL,
   `Pareja2` VARCHAR(45) NOT NULL,
   `Resultado1` ENUM('1', '2', 'X') NOT NULL,
@@ -356,15 +357,15 @@ VALUES ('CMP1','10/09/2018-30/09/2018','2018-09-05','1','Masculino');
 INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
 VALUES ('1', '1', 'SI', '2018-11-01 09:00:00', '7.50');
 INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
-VALUES ('2', '1', 'SI', '2018-11-02 09:00:00', '7.50');
+VALUES ('2', '1', 'SI', '2018-11-02 10:30:00', '7.50');
 INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
-VALUES ('3', '2', 'SI', '2018-11-01 10:30:00', '7.50');
+VALUES ('3', '2', 'SI', '2018-11-01 09:00:00', '7.50');
 INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
-VALUES ('4', '2', 'SI', '2018-11-02 10:30:00', '7.50');
+VALUES ('4', '2', 'SI', '2018-11-01 10:30:00', '7.50');
 INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
-VALUES ('5', '3', 'SI', '2018-11-01 12:00:00', '7.50');
+VALUES ('5', '3', 'SI', '2018-11-02 09:00:00', '7.50');
 INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
-VALUES ('6', '3', 'SI', '2018-11-02 12:30:00', '7.50');
+VALUES ('6', '3', 'SI', '2018-11-03 10:30:00', '7.50');
 
 
 
