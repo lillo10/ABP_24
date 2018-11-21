@@ -155,7 +155,7 @@ class Campeonato_SHOWCURRENT{  // declaración de clase
 			$i = 0; //Variable para saber el numero de iteraciones e identificar formularios e inputs
 			while($fila = $this->enfg2->fetch_row()){//Mientras haya filas, se coje una y se muestra
 				?>
-				<form id='formularioOpcion2<?php echo $i; ?>' method='GET' action='../Controllers/Enfrentamiento_CONTROLLER.php'>
+				<form id='formularioOpcio<?php echo $i; ?>' method='GET' action='../Controllers/Enfrentamiento_CONTROLLER.php'>
 					<tr>
 						<td id='Fecha'><?php echo $fila[0]; ?></td>
 						<td id='Grupo'><?php echo $fila[1]; ?></td>
@@ -165,8 +165,8 @@ class Campeonato_SHOWCURRENT{  // declaración de clase
 						<input type='hidden' name='idCampeonato' value="<?php echo $fila[5]; ?>"><td id='idCampeonato'><?php echo $fila[5]; ?></td></input>
 							
 						<td>
-							<input type='hidden' id="oculto<?php echo $i; ?>" name='orden' value=''/>
-							<img onMouseOver="document.getElementById('oculto<?php echo $i; ?>').value='EDIT'" onClick="document.getElementById('formularioOpcion2<?php echo $i; ?>').submit()" src='../img/edit.png' height='20px;' style='cursor: pointer'/>
+							<input type='hidden' id="ocult<?php echo $i; ?>" name='orden' value=''/>
+							<img onMouseOver="document.getElementById('ocult<?php echo $i; ?>').value='EDIT'" onClick="document.getElementById('formularioOpcio<?php echo $i; ?>').submit()" src='../img/edit.png' height='20px;' style='cursor: pointer'/>
 						</td> 
 					</tr>
 				</form>
