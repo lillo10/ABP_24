@@ -23,7 +23,6 @@
 			
 			if($idReserva == '*'){
 				$this -> generarCodigo();
-				echo $idReserva;
 			}else{
 				$this -> idReserva = $idReserva;
 			}
