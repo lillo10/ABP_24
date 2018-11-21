@@ -22,8 +22,8 @@ if(autenticado()){//Se debería usar un switch que de los permisos pero de momen
 			<div class="menudespleg">
 				<a href=''><button class="menu"><botonmenuizq>Reservas</botonmenuizq></button></a>
 					<div class="opciones">
-						<a href="">Mis reservas</a>
-						<a href="">Reservar</a>
+						<a href="../Controllers/Reserva_CONTROLLER.php">Mis reservas</a>
+						<a href="../Controllers/Reserva_CONTROLLER.php?orden=SHOWPISTAS">Reservar</a>
 					</div>
 			</div>
 	
