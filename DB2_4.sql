@@ -353,19 +353,71 @@ VALUES ('entrenador','entrenador','12345678E','Coach','Lillo','666666667','FALSE
 INSERT INTO `campeonato`(`idCampeonato`, `Periodo`, `LimInscrip`, `Categoria`, `Sexo`) 
 VALUES ('CMP1','10/09/2018-30/09/2018','2018-09-05','1','Masculino');
 
+/*Datos Pista1*/
 INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
-VALUES ('1', '1', 'SI', '2018-11-01 09:00:00', '7.50');
+VALUES ('1', '1', 'NO', '2018-12-01 09:00:00', '7.50');
 INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
-VALUES ('2', '1', 'SI', '2018-11-02 10:30:00', '7.50');
+VALUES ('2', '1', 'SI', '2018-12-01 10:30:00', '7.50');
 INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
-VALUES ('3', '2', 'SI', '2018-11-01 09:00:00', '7.50');
-INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
-VALUES ('4', '2', 'SI', '2018-11-01 10:30:00', '7.50');
-INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
-VALUES ('5', '3', 'SI', '2018-11-02 09:00:00', '7.50');
-INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
-VALUES ('6', '3', 'SI', '2018-11-03 10:30:00', '7.50');
+VALUES ('3', '1', 'SI', '2018-12-01 12:00:00', '7.50');
 
+INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
+VALUES ('4', '1', 'NO', '2018-12-02 09:00:00', '7.50');
+INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
+VALUES ('5', '1', 'SI', '2018-12-02 10:30:00', '7.50');
+INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
+VALUES ('6', '1', 'SI', '2018-12-02 12:00:00', '7.50');
+
+INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
+VALUES ('7', '1', 'NO', '2018-12-03 09:00:00', '7.50');
+INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
+VALUES ('8', '1', 'SI', '2018-12-03 10:30:00', '7.50');
+INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
+VALUES ('9', '1', 'SI', '2018-12-03 12:00:00', '7.50');
+
+/*Datos Pista2*/
+INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
+VALUES ('10', '2', 'NO', '2018-12-01 09:00:00', '7.50');
+INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
+VALUES ('11', '2', 'SI', '2018-12-01 10:30:00', '7.50');
+INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
+VALUES ('12', '2', 'SI', '2018-12-01 12:00:00', '7.50');
+
+INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
+VALUES ('13', '2', 'NO', '2018-12-02 09:00:00', '7.50');
+INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
+VALUES ('14', '2', 'SI', '2018-12-02 10:30:00', '7.50');
+INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
+VALUES ('55', '2', 'SI', '2018-12-02 12:00:00', '7.50');
+
+INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
+VALUES ('16', '2', 'NO', '2018-12-03 09:00:00', '7.50');
+INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
+VALUES ('17', '2', 'SI', '2018-12-03 10:30:00', '7.50');
+INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
+VALUES ('18', '2', 'SI', '2018-12-03 12:00:00', '7.50');
+
+/*Datos Pista3*/
+INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
+VALUES ('19', '3', 'NO', '2018-12-01 09:00:00', '7.50');
+INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
+VALUES ('20', '3', 'SI', '2018-12-01 10:30:00', '7.50');
+INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
+VALUES ('21', '3', 'SI', '2018-12-01 12:00:00', '7.50');
+
+INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
+VALUES ('22', '3', 'NO', '2018-12-02 09:00:00', '7.50');
+INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
+VALUES ('23', '3', 'SI', '2018-12-02 10:30:00', '7.50');
+INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
+VALUES ('24', '3', 'SI', '2018-12-02 12:00:00', '7.50');
+
+INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
+VALUES ('25', '3', 'NO', '2018-12-03 09:00:00', '7.50');
+INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
+VALUES ('26', '3', 'SI', '2018-12-03 10:30:00', '7.50');
+INSERT INTO `pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
+VALUES ('27', '3', 'SI', '2018-12-03 12:00:00', '7.50');
 
 
 
