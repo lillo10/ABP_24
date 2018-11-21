@@ -12,6 +12,8 @@
 	include '../Views/Reserva/Show_Pistas.php';
 	include '../Views/Reserva/Search_Pistas.php';
 	include '../Views/Reserva/Reserva_DELETE.php';
+	include '../Views/Reserva/Reserva_SHOWCURRENT.php';
+	
 	include '../Views/MESSAGE.php';
 	
 	function get_data_form(){
@@ -74,21 +76,21 @@
 			
 			break;
 		
-		/*case 'SHOWCURRENT':
-			if(count($_REQUEST) < 3){
-				$idPista = $_REQUEST['idPistas'];
-				$disponibilidad = $_REQUEST['disponibilidad'];
-				$fecha = $_REQUEST['fechahora'];
+		case 'SHOWCURRENT':
+			if(count($_REQUEST) < 4){
+				$idPista = $_REQUEST['idPista'];
+				$idReserva = $_REQUEST['idReserva'];
 				
-				$datos = explode(' ', $fecha);
-				
-				new Pista_SHOWCURRENT( array('idPista','disponibilidad', 'fecha' , 'hora'), array($idPista, $disponibilidad, $datos[0], $datos[1]),  '../Controllers/Pista_CONTROLLER.php');
-			}else{
-				$pista = get_data_form();
-				$datos = $pista->SHOWCURRENT();
-				new Mensaje($datos, '../Controllers/Pista_CONTROLLER.php');
+				$pista = new Pista($idPista,'','','','','');
+				$datos = $pista -> rellenaDatos();
+				$fechahora = explode(' ', $datos[3]);
+			
+				$reserva = new Reserva($idReserva,'','');
+				$datos2 = $reserva -> SEARCH();
+					
+				new Reserva_SHOWCURRENT( array('idReserva','login', 'numPista' , 'fecha', 'hora'), array($datos2[0], $datos2[1], $datos[1], $fechahora[0], $fechahora[1] ,),  '../Controllers/Reserva_CONTROLLER.php');
 			}
-		break;*/
+			break;
 		
 		case 'SEARCH':
 			if(count($_REQUEST) < 2){
@@ -99,6 +101,7 @@
 				
 				$pista = new Pista('','','',$fecha,$hora,'');
 				$datos = $pista -> SEARCH_RESERVA();
+				
 				$lista= array('idReserva', 'dni', 'idPista');
 				new Show_Pistas($lista, $datos, '');
 			}
