@@ -28,15 +28,28 @@
 					</tri>
 					<trp>
 						<tdp> Disponibilidad </tdp>
-						<tdp><input required type="text"  value="<?php echo $this->datos[2];?>" id="<?phpecho $this->lista[2];?>" name="<?php echo $this->lista[2];?>"  size="5" maxlength="5" /></tdp> 
-					</trp>
+						<tdp><select required id="<?php echo $this->lista[2];?>" name="<?php echo $this->lista[2];?>">
+							  <option value="SI" <?php if($this->datos[2] == 'SI') echo "selected";?>> SI </option>
+							  <option value="NO" <?php if($this->datos[2] == 'NO') echo "selected";?>> NO </option>
+						</select></tdp>
+						</trp>
 					<tri>
 						<tdi> Fecha </tdi>
 						<tdi><input required type="date" value="<?php echo $this->datos[3];?>" id="<?php echo $this->lista[3];?>" name="<?php echo $this->lista[3];?>"/> </tdi>
 					</tri>
 					<trp>
 						<tdp> Hora </tdp>
-						<tdp><input required type="time" value="<?php echo $this->datos[4];?>" id="<?php echo $this->lista[4];?>" name="<?php echo $this->lista[4];?>" /></tdp>
+						<tdp><select required id="<?php echo $this->lista[4];?>" name="<?php echo $this->lista[4];?>">
+							  <option value="9:00" <?php if($this->datos[4] == '9:00:00') echo "selected";?>> 9:00 </option>
+							  <option value="10:30" <?php if($this->datos[4] == '10:30:00') echo "selected";?>> 10:30 </option>
+							  <option value="12:00" <?php if($this->datos[4] == '12:00:00') echo "selected";?>> 12:00 </option>
+							  <option value="13:30" <?php if($this->datos[4] == '13:30:00') echo "selected";?>> 13:30 </option>
+							  <option value="15:00" <?php if($this->datos[4] == '15:00:00') echo "selected";?>> 15:00 </option>
+							  <option value="16:30" <?php if($this->datos[4] == '16:30:00') echo "selected";?>> 16:30 </option>
+							  <option value="18:00" <?php if($this->datos[4] == '18:00:00') echo "selected";?>> 18:00 </option>
+							  <option value="19:30" <?php if($this->datos[4] == '19:30:00') echo "selected";?>> 19:30 </option>
+							  <option value="21:00" <?php if($this->datos[4] == '21:00:00') echo "selected";?>> 21:00 </option>
+						</select></tdp>
 					</trp>
 					<tri>
 						<tdi> Precio </tdi>
