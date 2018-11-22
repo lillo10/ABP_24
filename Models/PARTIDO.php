@@ -80,20 +80,12 @@ class Partido{
 				return 'Esta pista a esta fecha y hora ya esta reservada';				
 			}
 			else{
-				$sql = "SELECT COUNT(idPartido) FROM Partido";
-			
-				$resultado = $this->mysqli->query($sql);
-				$fila = $resultado->fetch_row();
-				
-				$this->_setIdPartido($fila[0]+1);
-				
-				$idPartido = mysqli_real_escape_string($this->mysqli, $this->idPartido);
 				$fecha_hora = mysqli_real_escape_string($this->mysqli, $this->fecha_hora);
 				$numPista = mysqli_real_escape_string($this->mysqli, $this->numPista);
 				$jugadores = mysqli_real_escape_string($this->mysqli, $this->jugadores);
 				
-				$sql = "INSERT INTO Partido (idPartido, Pista_idPistas, `Pista_Fecha/Hora`, Jugadores)
-VALUES ('$idPartido', '$numPista', '$fecha_hora', '$jugadores')";
+				$sql = "INSERT INTO Partido (Pista_idPistas, `Pista_Fecha/Hora`, Jugadores)
+VALUES ('$numPista', '$fecha_hora', '$jugadores')";
 				$respuesta = $this->mysqli->query($sql);
 				
 				if(!$respuesta){
@@ -106,9 +98,10 @@ VALUES ('$idPartido', '$numPista', '$fecha_hora', '$jugadores')";
 	}
 
 	function _updateDisponibilidad(){
+		$this->_getPartidoLanzado($idPartido);
 		$fecha_hora = mysqli_real_escape_string($this->mysqli, $this->fecha_hora);
 		$numPista = mysqli_real_escape_string($this->mysqli, $this->numPista);
-		$sql = "UPDATE Pista SET Disponibilidad = 'NO' WHERE (`Fecha/Hora` = '$fecha_hora' AND idPistas = '$numPista')";
+		$sql = "UPDATE Pista SET Disponibilidad = 'NO' WHERE (`Fecha/Hora` = '$fecha_hora' AND num_Pista = '$numPista')";
 		$respuesta = $this->mysqli->query($sql);
 	}
 
@@ -148,16 +141,31 @@ VALUES ('$idPartido', '$numPista', '$fecha_hora', '$jugadores')";
 			return 'No hay partido con este id';
 		}else{
 			$fila = $resultado->fetch_row();
-			$this->_setNumPista($fila[1]);
-			$this->_setFecha_Hora($fila[2]);
+			$this->_setFecha_Hora($fila[1]);
+			$this->_setNumPista($fila[2]);
 			$this->_setJugadores($fila[3]);
 		}
 	}
 
-	function _deletePartido($idPartido, $admin){
-		if($admin == "FALSE"){
+	function _deletePartido($idPartido){
+		if(!esAdmin()){
+			$usuario = mysqli_real_escape_string($this->mysqli, $_SESSION['login']);
 			$idPartido = mysqli_real_escape_string($this->mysqli, $idPartido);
-			$sql = "DELETE FROM Usuarios_has_Partido WHERE Partido_idPartido = '$idPartido'";
+			$this->_getPartidoLanzado($idPartido);
+			$this->_setJugadores($this->_getJugadores()-1);
+			$jugadores = mysqli_real_escape_string($this->mysqli, $this->_getJugadores());
+			$sql = "UPDATE Partido SET Jugadores = '$jugadores' WHERE idPartido = '$idPartido'";
+			if(!$this->mysqli->query($sql)){
+				return 'Ha fallado la actualización del numero de Jugadores';
+			}else{
+				$sql = "DELETE FROM Usuarios_has_Partido WHERE (Usuarios_login = '$usuario' AND Partido_idPartido = '$idPartido')";
+				if(!$this->mysqli->query($sql)){
+					return 'Ha fallado tu eliminación de este partido';
+				}
+				else{
+					return 'Modificado correcto';
+				}
+			}
 		}
 		else{
 			$this->_getPartidoLanzado($idPartido);
@@ -168,6 +176,15 @@ VALUES ('$idPartido', '$numPista', '$fecha_hora', '$jugadores')";
 				$idPartido = mysqli_real_escape_string($this->mysqli, $idPartido);
 				$fecha_hora = mysqli_real_escape_string($this->mysqli, $this->fecha_hora);
 				$numPista = mysqli_real_escape_string($this->mysqli, $this->numPista);
+
+				echo $fecha_hora;
+				echo $numPista;
+				if($this->_getJugadores()==4){
+					$sql = "UPDATE Pista SET Disponibilidad = 'SI' WHERE (num_Pista = '$numPista' AND `Fecha/Hora` = '$fecha_hora')";
+					if(!$this->mysqli->query($sql)){
+						return 'Ha fallado la actualización de la disponibilidad de la pista';
+					}
+				}
 				$sql = "DELETE FROM Usuarios_has_Partido WHERE Partido_idPartido = '$idPartido'";
 				if(!$this->mysqli->query($sql)){
 					return 'Ha fallado el borrado de los usuarios de este partido';
@@ -176,19 +193,13 @@ VALUES ('$idPartido', '$numPista', '$fecha_hora', '$jugadores')";
 					if(!$this->mysqli->query($sql)){
 						return 'Ha fallado el borrado del partido';
 					}else{
-						$sql = "UPDATE Pista SET Disponibilidad = 'NO' WHERE (`Fecha/Hora` = '$fecha_hora' AND idPistas = '$numPista')";
-						if(!$this->mysqli->query($sql)){
-							return 'Ha fallado la actualización de la disponibilidad de la pista';
-						}else{
-							return 'Modificado correcto';
-						}
+						return 'Modificado correcto';
 					}
 				}
 			}else{
 				return 'No se ha podido conectar con la BD';
 			}
 		}
-		
 	}
 
 	function _showUsers($idPartido){
@@ -228,7 +239,7 @@ VALUES ('$idPartido', '$numPista', '$fecha_hora', '$jugadores')";
 	function _checkExistePista(){
 		$fecha_hora = mysqli_real_escape_string($this->mysqli, $this->fecha_hora);
 		$numPista = mysqli_real_escape_string($this->mysqli, $this->numPista);
-		$sql = "SELECT * FROM Pista WHERE (`Fecha/Hora` = '$fecha_hora' AND `idPistas` = '$numPista')";
+		$sql = "SELECT * FROM Pista WHERE (`Fecha/Hora` = '$fecha_hora' AND `num_Pista` = '$numPista')";
 		$resultado = $this->mysqli->query($sql);
 		if($resultado != 0){
 			return "TRUE";
@@ -243,7 +254,7 @@ VALUES ('$idPartido', '$numPista', '$fecha_hora', '$jugadores')";
 		$fecha_hora = mysqli_real_escape_string($this->mysqli, $this->fecha_hora);
 		$numPista = mysqli_real_escape_string($this->mysqli, $this->numPista);
 
-		$sql = "SELECT Disponibilidad FROM Pista WHERE (`Fecha/Hora` = '$fecha_hora' AND `idPistas` = '$numPista')";
+		$sql = "SELECT Disponibilidad FROM Pista WHERE (`Fecha/Hora` = '$fecha_hora' AND `num_Pista` = '$numPista')";
 		$resultado = $this->mysqli->query($sql);
 		$fila = $resultado->fetch_row();
 		if($fila[0] == "NO")
