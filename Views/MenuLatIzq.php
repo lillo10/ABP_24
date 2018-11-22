@@ -44,8 +44,8 @@ if(autenticado()){//Se debería usar un switch que de los permisos pero de momen
 			<div class="menudespleg">
 				<a href=''><button class="menu">Partidos</button></a>
 					<div class="opciones">
-						<a href="">Mis partidos</a>
-						<a href="">Lista de partidos</a>
+						<a href="../Controllers/Partido_CONTROLLER.php?action=mygames">Mis Partidos</a>
+						<a href="../Controllers/Partido_CONTROLLER.php?action=list">Lista de Partidos</a>
 					</div>
 			</div>
 	
