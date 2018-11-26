@@ -33,9 +33,9 @@ function get_data_form(){
 }
 	
 
-/*if (!isset($_REQUEST['orden'])){ //si no viene del formulario, no existe array POST
+if (!isset($_REQUEST['orden'])){ //si no viene del formulario, no existe array POST
 	$_REQUEST['orden'] = 'SHOWALL';
-}*/
+}
 		switch ($_REQUEST['orden']){
 			
 			case 'ADD':
