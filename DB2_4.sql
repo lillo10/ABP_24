@@ -54,6 +54,7 @@ ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 CREATE TABLE IF NOT EXISTS `PadelDB`.`Clase` (
   `idClase` INT NOT NULL,
   `Pista` VARCHAR(45) NOT NULL,
+  `Fecha` DATETIME NOT NULL,
   `Precio` INT(3) NOT NULL,
   `Entrenador_login` VARCHAR(14) NOT NULL,
   PRIMARY KEY (`idClase`),
@@ -370,6 +371,17 @@ VALUES ('adrian','adrian','12395673E','Adrian','Carballido','646676667','FALSE',
 INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
 VALUES ('juan','juan','92345673E','Juan','Amil','645566667','FALSE','FALSE');
 
+/*Usuarios-Entrenadores*/
+INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
+VALUES ('harry','harry','92345673E','Harry','Potter','645566667','FALSE','TRUE');
+
+INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
+VALUES ('draco','draco','92345673A','Draco','Malfoy','645566657','FALSE','TRUE');
+
+INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
+VALUES ('hermione','hermione','92345673B','Hermione','Granger','645566647','FALSE','TRUE');
+
+
 
 /*Campeonatos*/
 /*1*/
@@ -530,6 +542,19 @@ VALUES ('27', '3', 'SI', '2018-12-03 12:00:00', '7.50');
 
 
 
+/*Clases*/
+
+INSERT INTO Clase (idClase, Pista, Fecha, Precio, Entrenador_login)
+VALUES ('1', '1', '2018-12-01 09:00:00','500', 'Harry');
+
+INSERT INTO Clase (idClase, Pista, Fecha, Precio, Entrenador_login)
+VALUES ('2', '2', '2018-12-01 09:00:00','500', 'Draco');
+
+INSERT INTO Clase (idClase, Pista, Fecha, Precio, Entrenador_login)
+VALUES ('3', '3', '2018-12-01 09:00:00','500', 'Hermione');
+
+
+
 
 /*INSERT INTO Usuarios_has_Partido (Usuarios_DNI, Partido_idPartido)
 VALUES ('49710115Z', '3');
@@ -570,5 +595,5 @@ VALUES ('1', '31/12/2018', '1');
 INSERT INTO Pista (idPistas, Disponibilidad, Fecha/Hora)
 VALUES ('2', 'TRUE', '31/12/2018');
 
-INSERT INTO Clase (idClase, Pista, Precio, Entrenador_DNI)
-VALUES ('1', '1', '500', '44444444X');*/
+INSERT INTO Clase (idClase, Pista, Fecha, Precio, Entrenador_DNI)
+VALUES ('1', '1', '2018-12-20','500', '44444444X');*/
