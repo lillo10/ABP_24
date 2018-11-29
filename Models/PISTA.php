@@ -53,7 +53,7 @@
 		}
 		
 		function ADD(){
-			$sql = "SELECT * FROM pista WHERE (idPistas = '".$this -> idPista."')";
+			$sql = "SELECT * FROM Pista WHERE num_Pista = '".$this -> numPista."' and `Fecha/Hora` = '".$this -> fechahora."'";
 			
 			$resultado = $this->mysqli->query($sql);
 			
@@ -61,7 +61,7 @@
 				return "No se ha podido conectar con la DB";
 			}else{
 				if($resultado->num_rows == 0){
-					$sql = "INSERT INTO pista (idPistas, num_Pista, Disponibilidad, `Fecha/Hora`, Precio) VALUES ('$this->idPista', '$this->numPista', '$this->disponibilidad', '$this->fechahora', '$this->precio')";
+					$sql = "INSERT INTO Pista (idPistas, num_Pista, Disponibilidad, `Fecha/Hora`, Precio) VALUES ('$this->idPista', '$this->numPista', '$this->disponibilidad', '$this->fechahora', '$this->precio')";
 					
 					if(!$this->mysqli->query($sql)){
 						return "Error en la inserción";
@@ -76,18 +76,31 @@
 		
 		function EDIT(){
 			$sql = "SELECT * FROM pista WHERE (idPistas = '".$this -> idPista."') ";
-			
+
 			$resultado = $this->mysqli->query($sql);
 			
 			if($resultado->num_rows == 1){
-				$sql = "UPDATE pista SET `num_Pista` = '".$this -> numPista."', `Disponibilidad` = '".$this -> disponibilidad."', `Fecha/Hora` = '".$this -> fechahora."', `Precio` = '".$this -> precio."' WHERE idPistas = '".$this -> idPista."' ";
 				
+				$sql = "SELECT * FROM Pista WHERE num_Pista = '".$this -> numPista."' and `Fecha/Hora` = '".$this -> fechahora."'";
+			
 				$resultado = $this->mysqli->query($sql);
 				
 				if(!$resultado){
-					return "Error en la modificación";
+					return "No se ha podido conectar con la DB";
 				}else{
-					return "Modificado correctamente";
+					if($resultado->num_rows == 0){
+						$sql = "UPDATE Pista SET `num_Pista` = '".$this -> numPista."', `Disponibilidad` = '".$this -> disponibilidad."', `Fecha/Hora` = '".$this -> fechahora."', `Precio` = '".$this -> precio."' WHERE idPistas = '".$this -> idPista."' ";
+				
+						$resultado = $this->mysqli->query($sql);
+				
+						if(!$resultado){
+							return "Error en la modificación";
+						}else{
+							return "Modificado correctamente";
+						}
+					}else{
+						return "Ya existe en la base de datos";
+					}
 				}
 			}else{
 				return "La pista no existe";
@@ -95,7 +108,7 @@
 		}
 		
 		function DELETE(){
-			$sql = "SELECT * FROM pista WHERE (idPistas = '".$this -> idPista."')";
+			$sql = "SELECT * FROM Pista WHERE (idPistas = '".$this -> idPista."')";
 
 			$resultado = $this->mysqli->query($sql);
 			
@@ -112,7 +125,7 @@
 		
 		function SEARCH(){
 			
-			$sql = "SELECT * FROM `pista` WHERE `idPistas` LIKE '%".$this -> idPista."%' and `num_Pista` LIKE '%".$this -> numPista."%' and `Disponibilidad` LIKE '%".$this -> disponibilidad."%' and `Fecha/Hora` LIKE '%".$this -> fechahora."%' and `Precio` LIKE '%".$this -> precio."%'";
+			$sql = "SELECT * FROM Pista WHERE `idPistas` LIKE '%".$this -> idPista."%' and `num_Pista` LIKE '%".$this -> numPista."%' and `Disponibilidad` LIKE '%".$this -> disponibilidad."%' and `Fecha/Hora` LIKE '%".$this -> fechahora."%' and `Precio` LIKE '%".$this -> precio."%'";
 			
 			$resultado = $this->mysqli->query($sql);
 			
@@ -127,7 +140,7 @@
 		}
 		
 		function SHOWCURRENT(){
-			$sql = "SELECT * FROM pista WHERE (idPistas = '".$this -> idPista."')";
+			$sql = "SELECT * FROM Pista WHERE (idPistas = '".$this -> idPista."')";
 			
 			$resultado = $this->mysqli->query($sql);
 			
@@ -140,7 +153,7 @@
 		
 		function SHOWALL(){
 			
-			$sql = "SELECT * FROM `pista` WHERE `idPistas` LIKE '%".$this -> idPista."%' and `num_Pista` LIKE '%".$this -> numPista."%' and `Disponibilidad` LIKE '%".$this -> disponibilidad."%' and `Fecha/Hora` LIKE '%".$this -> fechahora."%' and `Precio` LIKE '%".$this -> precio."%'";
+			$sql = "SELECT * FROM Pista WHERE `idPistas` LIKE '%".$this -> idPista."%' and `num_Pista` LIKE '%".$this -> numPista."%' and `Disponibilidad` LIKE '%".$this -> disponibilidad."%' and `Fecha/Hora` LIKE '%".$this -> fechahora."%' and `Precio` LIKE '%".$this -> precio."%'";
 			
 			$resultado = $this->mysqli->query($sql);
 			
@@ -155,7 +168,7 @@
 		}
 		
 		function SEARCH_RESERVA(){
-			$sql = "SELECT * FROM pista WHERE `Fecha/Hora` LIKE '%".$this -> fechahora."%' and Disponibilidad = 'SI' ";
+			$sql = "SELECT * FROM Pista WHERE `Fecha/Hora` LIKE '%".$this -> fechahora."%' and Disponibilidad = 'SI' ";
 			
 			$resultado = $this->mysqli->query($sql);
 			
@@ -170,7 +183,7 @@
 		}
 		
 		function SHOWPISTAS(){
-			$sql = "SELECT * FROM `pista` WHERE `Disponibilidad` = 'SI'";
+			$sql = "SELECT * FROM Pista WHERE `Disponibilidad` = 'SI'";
 			
 			$resultado = $this->mysqli->query($sql);
 			
@@ -200,7 +213,7 @@
 		}*/
 		
 		function pistaOcupada(){
-			$sql = "UPDATE pista SET `Disponibilidad` = 'NO' WHERE idPistas = '".$this -> idPista."' ";
+			$sql = "UPDATE Pista SET `Disponibilidad` = 'NO' WHERE idPistas = '".$this -> idPista."' ";
 			
 			$resultado = $this->mysqli->query($sql);
 			
@@ -212,7 +225,7 @@
 		}
 		
 		function pistaLibre(){
-			$sql = "UPDATE pista SET `Disponibilidad` = 'SI' WHERE idPistas = '".$this -> idPista."' ";
+			$sql = "UPDATE Pista SET `Disponibilidad` = 'SI' WHERE idPistas = '".$this -> idPista."' ";
 			
 			$resultado = $this->mysqli->query($sql);
 			
