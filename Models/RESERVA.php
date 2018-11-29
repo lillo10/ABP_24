@@ -7,7 +7,7 @@
 		var $mysqli;
 		
 		function generarCodigo(){
-			$sql = "SELECT COUNT(*) FROM reserva ";
+			$sql = "SELECT COUNT(*) FROM Reserva ";
 			
 			$resultado = $this->mysqli->query($sql);
 			
@@ -32,7 +32,7 @@
 		}
 		
 		function RESERVAR(){
-			$sql = "SELECT * FROM reserva WHERE (idReserva = '".$this -> idReserva."' )";
+			$sql = "SELECT * FROM Reserva WHERE (idReserva = '".$this -> idReserva."' )";
 			
 			$resultado = $this->mysqli->query($sql);
 			
@@ -40,12 +40,12 @@
 				return "No se ha podido conectar con la DB";
 			}else{
 				if($resultado->num_rows == 0){
-					$sql = "INSERT INTO reserva (idReserva, Deportista_login, Pista_idPistas) VALUES ('$this->idReserva', '$this->login', '$this->idPista')";
+					$sql = "INSERT INTO Reserva (idReserva, Deportista_login, Pista_idPistas) VALUES ('$this->idReserva', '$this->login', '$this->idPista')";
 					
 					if(!$this->mysqli->query($sql)){
-						return "Error en la inserción";
+						return "Error al realizar la reserva";
 					}else{
-						return "Inserción realizada";
+						return "Reserva realizada";
 					}
 				}else{
 					return "Ya existe en la base de datos";
@@ -55,24 +55,24 @@
 		
 		
 		function DELETE(){
-			$sql = "SELECT * FROM reserva WHERE (idReserva = '".$this -> idReserva."')";
+			$sql = "SELECT * FROM Reserva WHERE (idReserva = '".$this -> idReserva."')";
 			
 			$resultado = $this->mysqli->query($sql);
 			
 			if($resultado->num_rows == 1){
-				$sql = "DELETE FROM reserva WHERE (idReserva = '".$this -> idReserva."')";
+				$sql = "DELETE FROM Reserva WHERE (idReserva = '".$this -> idReserva."')";
 				
 				$this->mysqli->query($sql);
 				
-				return "Borrado realizado";
+				return "Reserva cancelada";
 			}else{
-				return "La pista no existe";
+				return "La reserva no existe";
 			}
 		}
 		
 		function SEARCH(){
 			
-			$sql = "SELECT * FROM `reserva` WHERE `idReserva` = '".$this -> idReserva."' ";
+			$sql = "SELECT * FROM Reserva WHERE `idReserva` = '".$this -> idReserva."' ";
 		
 			$resultado = $this->mysqli->query($sql);
 			
@@ -100,7 +100,7 @@
 		
 		function SHOWALL(){
 			if(esAdmin()){
-				$sql2 = "SELECT * FROM `reserva` ";
+				$sql2 = "SELECT * FROM Reserva ";
 				
 				$resultado2 = $this->mysqli->query($sql2);
 				
@@ -113,7 +113,7 @@
 					return $resultado2;
 				}
 			}else{
-				$sql2 = "SELECT * FROM `reserva` WHERE  `Deportista_login` = '".$_SESSION['login']."' ";
+				$sql2 = "SELECT * FROM Reserva WHERE  `Deportista_login` = '".$_SESSION['login']."' ";
 				
 				$resultado2 = $this->mysqli->query($sql2);
 				
@@ -130,12 +130,12 @@
 		}
 			
 		function borrarReservaDePista(){
-			$sql = "SELECT * FROM reserva WHERE (Pista_idPistas = '".$this -> idPista."')";
+			$sql = "SELECT * FROM Reserva WHERE (Pista_idPistas = '".$this -> idPista."')";
 			
 			$resultado = $this->mysqli->query($sql);
 			
 			if($resultado->num_rows > 0){
-				$sql = "DELETE FROM reserva WHERE (Pista_idPistas = '".$this -> idPista."')";
+				$sql = "DELETE FROM Reserva WHERE (Pista_idPistas = '".$this -> idPista."')";
 				
 				$this->mysqli->query($sql);
 				
