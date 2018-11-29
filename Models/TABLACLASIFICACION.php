@@ -45,7 +45,7 @@ class TablaClasificacion{
 		}else{
 			$idCampeonato = mysqli_real_escape_string($this->mysqli, $this->idCampeonato);
 			$NombrePareja = mysqli_real_escape_string($this->mysqli, $this->NombrePareja);
-			$sql = "SELECT * FROM tablaclasificacion WHERE idCampeonato = '$idCampeonato' AND NombrePareja = '$NombrePareja'";
+			$sql = "SELECT * FROM Tablaclasificacion WHERE idCampeonato = '$idCampeonato' AND NombrePareja = '$NombrePareja'";
 			
 			$resultado = $this->mysqli->query($sql);
 			

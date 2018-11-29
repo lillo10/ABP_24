@@ -264,7 +264,7 @@ class Campeonato{
 	function INSCRIBIRSE(){
 		$idCampeonato = mysqli_real_escape_string($this->mysqli, $this->idCampeonato);
 		$login = $_SESSION['login'];
-		$sql = "INSERT INTO campeonatousuario (idCampeonato, login) VALUES ('$idCampeonato', '$login');";
+		$sql = "INSERT INTO Campeonatousuario (idCampeonato, login) VALUES ('$idCampeonato', '$login');";
 	
 		$resultado = $this->mysqli->query($sql);
 		
