@@ -41,7 +41,7 @@
 		}
 		
 		function rellenaDatos(){
-			$sql = "SELECT * FROM pista WHERE (idPistas = '".$this -> idPista."')";
+			$sql = "SELECT * FROM Pista WHERE (idPistas = '".$this -> idPista."')";
 			
 			$resultado = $this->mysqli->query($sql);
 			
