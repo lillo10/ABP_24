@@ -13,7 +13,7 @@ if(!isset($_REQUEST['login']) && (!isset($_REQUEST['password']))){//Si no se ha 
 }else{//Sino
 	include '../Models/USUARIO.php';
 
-		$usuario = new Usuario($_REQUEST['login'],$_REQUEST['password'],'','','','','','');//Se crea un usuario con solamente el login y pass
+		$usuario = new Usuario($_REQUEST['login'],$_REQUEST['password'],'','','','','','','');//Se crea un usuario con solamente el login y pass
 		$respuesta = $usuario->LOGIN();//Se comprueba que exista en la BD
 
 	if($respuesta == 'true'){//Si se ha encontrado ese login con esa contraseña
