@@ -7,14 +7,13 @@
 		var $mysqli;
 		
 		function generarCodigo(){
-			$sql = "SELECT COUNT(*) FROM Reserva ";
+			$sql = "SELECT max(idReserva) FROM Reserva ";
 			
 			$resultado = $this->mysqli->query($sql);
-			
+		
 			$num = $resultado->fetch_row()[0];
-			//echo ($num+1);
+			
 			$this->idReserva= ($num+1);
-			//echo $this->idReserva;
 		}
 		
 		function __construct ($idReserva, $login, $idPista){
@@ -32,24 +31,34 @@
 		}
 		
 		function RESERVAR(){
-			$sql = "SELECT * FROM Reserva WHERE (idReserva = '".$this -> idReserva."' )";
 			
-			$resultado = $this->mysqli->query($sql);
+			$contar = "SELECT COUNT(*) FROM Reserva";
 			
-			if(!$resultado){
-				return "No se ha podido conectar con la DB";
-			}else{
-				if($resultado->num_rows == 0){
-					$sql = "INSERT INTO Reserva (idReserva, Deportista_login, Pista_idPistas) VALUES ('$this->idReserva', '$this->login', '$this->idPista')";
-					
-					if(!$this->mysqli->query($sql)){
-						return "Error al realizar la reserva";
-					}else{
-						return "Reserva realizada";
-					}
+			$resultado_contar = $this->mysqli->query($contar);
+			$reservas = intval($resultado_contar->fetch_row()[0]+1);
+			if($reservas < 6){
+			
+				$sql = "SELECT * FROM Reserva WHERE (idReserva = '".$this -> idReserva."' )";
+				
+				$resultado = $this->mysqli->query($sql);
+				
+				if(!$resultado){
+					return "No se ha podido conectar con la DB";
 				}else{
-					return "Ya existe en la base de datos";
+					if($resultado->num_rows == 0){
+						$sql = "INSERT INTO Reserva (idReserva, Deportista_login, Pista_idPistas) VALUES ('$this->idReserva', '$this->login', '$this->idPista')";
+						
+						if(!$this->mysqli->query($sql)){
+							return "Error al realizar la reserva";
+						}else{
+							return "Reserva realizada";
+						}
+					}else{
+						return "Ya existe en la base de datos";
+					}
 				}
+			}else{
+				return "No se pueden reservar más de 5 pistas";
 			}
 		}
 		
