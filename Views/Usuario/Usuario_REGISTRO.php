@@ -37,7 +37,10 @@ class Usuario_REGISTRO{  // declaración de clase
 					</tri>
 					<trp>
 						<tdp>Telefono</tdp><tdp><input required type="text" id="Telefono" name="Telefono" size="20" maxlength="13"/></tdp>
-					</trp><br/><br/>
+					</trp>
+					<tri>
+						<tdi>Email</tdi><tdi><input required type="text" id="Email" name="Email" size="30" maxlength="40" /></tdi>
+					</tri><br/><br/>
 					<button onClick="document.getElementById('formularioRegister').submit()" name="orden" value="REGISTRO"/><img src="../img/register.png" height="30px"/>
 					
 				</table>
