@@ -41,12 +41,27 @@ CREATE TABLE IF NOT EXISTS `PadelDB`.`Usuarios` (
   `Nombre` VARCHAR(45) NOT NULL,
   `Apellido` VARCHAR(45) NOT NULL,
   `Telefono` INT(9) NOT NULL,
+  `Email` VARCHAR(25) NOT NULL,
   `Administrador` VARCHAR(9) NOT NULL,
   `Entrenador` VARCHAR(9) NOT NULL,
   PRIMARY KEY (`login`),
   UNIQUE KEY `login` (`login`)
   )
 ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+
+-- -----------------------------------------------------
+-- Table `PadelDB`.`Noticia`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `PadelDB`.`Noticia` (
+  `idNoticia` INT NOT NULL AUTO_INCREMENT, 
+  `asunto` VARCHAR(50) NOT NULL, 
+  `mensaje` VARCHAR(500) NOT NULL, 
+  `fecha` DATE NOT NULL, 
+  PRIMARY KEY (`idNoticia`)
+  )
+ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
 
 -- -----------------------------------------------------
 -- Table `PadelDB`.`Clase`
@@ -511,7 +526,7 @@ VALUES ('13', '2', 'NO', '2018-12-02 09:00:00', '7.50');
 INSERT INTO `Pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
 VALUES ('14', '2', 'SI', '2018-12-02 10:30:00', '7.50');
 INSERT INTO `Pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
-VALUES ('55', '2', 'SI', '2018-12-02 12:00:00', '7.50');
+VALUES ('15', '2', 'SI', '2018-12-02 12:00:00', '7.50');
 
 INSERT INTO `Pista` (`idPistas`, `num_Pista`, `Disponibilidad`, `Fecha/Hora`, `Precio`) 
 VALUES ('16', '2', 'NO', '2018-12-03 09:00:00', '7.50');
