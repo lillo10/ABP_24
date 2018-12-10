@@ -63,7 +63,6 @@
 					<button type="submit" name="orden" value="SEARCH"/><img src="../img/search.png" height="30px"/>
 				</table>
 			</form>
-			<br><br> <a href='../Controllers/Pista_CONTROLLER.php'>Volver </a> 
 		</fieldset>
 		</div>
 <?php
