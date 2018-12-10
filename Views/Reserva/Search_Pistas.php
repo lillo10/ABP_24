@@ -43,7 +43,6 @@
 					<button type="submit" name="orden" value="SEARCH"/><img src="../img/search.png" height="30px"/>
 				</table>
 			</form>
-			<br><br> <a href='../Controllers/Reserva_CONTROLLER.php?orden=SHOWPISTAS'>Volver </a> 
 		</fieldset>
 		</div>
 <?php
