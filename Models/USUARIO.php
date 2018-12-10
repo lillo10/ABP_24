@@ -9,12 +9,13 @@ class Usuario{
 	var $Nombre;
 	var $Apellidos;
 	var $Telefono;
+	var $Email;
 	var $Administrador;
 	var $Entrenador;
 	var $mysqli;
 	//Atributos
 	
-	function __construct($login, $password, $DNI, $Nombre, $Apellidos, $Telefono, $Administrador, $Entrenador){
+	function __construct($login, $password, $DNI, $Nombre, $Apellidos, $Telefono, $Email, $Administrador, $Entrenador){
 		//Asignaciones
 		$this->_setLogin($login);
 		$this->_setPassword($password);
@@ -22,6 +23,7 @@ class Usuario{
 		$this->_setNombre($Nombre);
 		$this->_setApellidos($Apellidos);
 		$this->_setTelefono($Telefono);
+		$this->_setEmail($Email);
 		$this->_setAdministrador($Administrador);
 		$this->_setEntrenador($Entrenador);
 		
@@ -52,6 +54,10 @@ class Usuario{
 		
 		function _setTelefono($Telefono){
 			$this->Telefono = $Telefono;
+		}
+		
+		function _setEmail($Email){
+			$this->Email = $Email;
 		}
 
 		function _setAdministrador($Administrador){
@@ -91,6 +97,10 @@ class Usuario{
 			return $this->Telefono;
 		}
 		
+		function _getEmail(){
+			return $this->Email;
+		}
+		
 		function _getEntrenador(){
 			return $this->Entrenador;
 		}
@@ -116,8 +126,9 @@ class Usuario{
 					$this->_setNombre($fila[3]);
 					$this->_setApellidos($fila[4]);
 					$this->_setTelefono($fila[5]);
-					$this->_setAdministrador($fila[6]);
-					$this->_setEntrenador($fila[7]);
+					$this->_setEmail($fila[6]);
+					$this->_setAdministrador($fila[7]);
+					$this->_setEntrenador($fila[8]);
 				}
 			}
 		}
@@ -196,11 +207,12 @@ class Usuario{
 				$Nombre = mysqli_real_escape_string($this->mysqli, $this->Nombre);
 				$Apellidos = mysqli_real_escape_string($this->mysqli, $this->Apellidos);
 				$Telefono = mysqli_real_escape_string($this->mysqli, $this->Telefono);
+				$Email = mysqli_real_escape_string($this->mysqli, $this->Email);
 				$Administrador = mysqli_real_escape_string($this->mysqli, $this->Administrador);
 				$Entrenador = mysqli_real_escape_string($this->mysqli, $this->Entrenador);
 				
-				$sql = "INSERT INTO Usuarios (login, password, DNI, Nombre, Apellido, Telefono, Administrador, Entrenador) VALUES ('$login','$password','$DNI','$Nombre',
-				'$Apellidos','$Telefono','$Administrador','$Entrenador')";
+				$sql = "INSERT INTO Usuarios (login, password, DNI, Nombre, Apellido, Telefono, Email, Administrador, Entrenador) VALUES ('$login','$password','$DNI','$Nombre',
+				'$Apellidos','$Telefono','$Email','$Administrador','$Entrenador')";
 
 				/*$sql = "INSERT INTO Usuarios (login, password, DNI, Nombre, Apellido, Telefono, Administrador) VALUES ('lillo10','hola','15492083N','Angel', 'Lillo','648737151','FALSE')";*/
 				
