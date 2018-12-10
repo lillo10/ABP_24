@@ -62,7 +62,6 @@
 					}?>
 				</tbody>
 			</table>
-			<br><br> <a href='../Controllers/Index_CONTROLLER.php'> Volver </a> 
 		</section>
 
 <?php
