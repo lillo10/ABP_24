@@ -13,6 +13,8 @@
 		function toString(){
 			include '../Views/Header.php';
 			include '../Views/MenuNavHorizontal.php';
+			include '../Views/MenuLatIzq.php';
+
 	?>	
 		<div class="general">	
 		<fieldset><legend class="TituloFormulario">Editar Pista</legend>
@@ -59,7 +61,6 @@
 					<button type="submit" name="orden" value="EDIT"/><img src="../img/edit.png" height="30px"/>
 				</table>
 			</form>
-			<br><br> <a href='../Controllers/Pista_CONTROLLER.php'>Volver </a> 
 		</fieldset>
 		</div><?php
 		include '../Views/Footer.php';
