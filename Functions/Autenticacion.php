@@ -15,7 +15,7 @@ function esAdmin(){
 		return false;
 	}
 	
-	$usuario = new Usuario($_SESSION['login'],'','','','','','','');
+	$usuario = new Usuario($_SESSION['login'],'','','','','','','','');
 	
 	$usuario->_getDatosGuardados();
 	if ($usuario->_getAdministrador() == 'TRUE') {
@@ -34,7 +34,7 @@ function esEntrenador(){
 		return false;
 	}
 	
-	$usuario = new Usuario($_SESSION['login'],'','','','','','','');
+	$usuario = new Usuario($_SESSION['login'],'','','','','','','','');
 	
 	$usuario->_getDatosGuardados();
 	if ($usuario->_getEntrenador() == 'TRUE') {
