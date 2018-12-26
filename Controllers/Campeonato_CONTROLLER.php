@@ -26,7 +26,7 @@ function get_data_form(){
 	$LimInscrip = $_REQUEST['LimInscrip'];
 	$Categoria = $_REQUEST['Categoria'];
 	$Sexo = $_REQUEST['Sexo'];
-
+	
 	$campeonato = new Campeonato($idCampeonato, $Periodo, $LimInscrip, $Categoria, $Sexo);
  
 	return $campeonato;
@@ -44,6 +44,7 @@ if (!isset($_REQUEST['orden'])){ //si no viene del formulario, no existe array P
 					}else{
 						$campeonato = get_data_form();//Si post cogemos campeonato
 						$respuesta = $campeonato->ADD();//Y lo añadimos
+						$respuesta = $campeonato -> obtenerEmail();
 						new Mensaje($respuesta, '../Controllers/Campeonato_CONTROLLER.php');// y a ver qué ha pasado en la BD
 					}
 				
