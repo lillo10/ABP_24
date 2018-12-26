@@ -8,7 +8,16 @@ if(autenticado()){//Se debería usar un switch que de los permisos pero de momen
 	//Esta sería la rama de ADMIN
 	?>
 	<div class="menulateralizq" >
-
+			<div class="menudespleg">
+				<a href=''><button class="menu">Noticias</button></a>
+					<div class="opciones">
+						<?php if(esAdmin()){ ?>
+							<a href="../Controllers/Noticia_CONTROLLER.php?orden=ADD">Añadir Noticia</a>
+						<?php } ?>
+						<a href="../Controllers/Noticia_CONTROLLER.php">Ver Noticias</a>
+					</div>
+			</div>
+			
 			<?php if(esAdmin()){ ?>
 				<div class="menudespleg">
 					<a href=''><button class="menu">Pistas</button></a>
