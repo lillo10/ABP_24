@@ -45,8 +45,7 @@ if(autenticado()){//Se debería usar un switch que de los permisos pero de momen
 
 						<?php
 						}?>
-						<a href="">Mis campeonatos</a>
-						<a href="../Controllers/Campeonato_CONTROLLER.php">Lista de campeonatos</a>
+						<a href="../Controllers/Campeonato_CONTROLLER.php?orden=SHOWALL2">Lista de campeonatos</a>
 					</div>
 			</div>
 

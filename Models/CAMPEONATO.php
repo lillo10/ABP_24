@@ -288,7 +288,20 @@ class Campeonato{
 	}
 	
 	function SHOWALL(){//Para mostrar la BD
-		$sql = "SELECT * FROM Campeonato";
+		$Periodo = mysqli_real_escape_string($this->mysqli, $this->Periodo);
+		$sql = "SELECT * FROM Campeonato WHERE Periodo = '$Periodo'";
+
+		$resultado = $this->mysqli->query($sql);
+		
+		if(!$resultado){
+			return 'No se ha podido conectar con la BD';
+		}
+		
+		return $resultado;
+	}
+
+	function SHOWALL2(){//Para mostrar la BD
+		$sql = "SELECT Periodo, LimInscrip FROM Campeonato GROUP BY Periodo";
 
 		$resultado = $this->mysqli->query($sql);
 		

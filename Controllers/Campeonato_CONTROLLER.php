@@ -16,6 +16,7 @@
 	include '../Views/Campeonato/Campeonato_DELETE.php';
 	include '../Views/Campeonato/Campeonato_SHOWCURRENT.php';
 	include '../Views/Campeonato/Campeonato_SHOWALL.php';
+	include '../Views/Campeonato/Campeonato_SHOWALL2.php';
 	include '../Views/TablaClasificacion/TablaClasificacion_ADD.php';
 	include '../Views/MESSAGE.php';
 	
@@ -34,7 +35,7 @@ function get_data_form(){
 	
 
 if (!isset($_REQUEST['orden'])){ //si no viene del formulario, no existe array POST
-	$_REQUEST['orden'] = 'SHOWALL';
+	$_REQUEST['orden'] = 'SHOWALL2';
 }
 		switch ($_REQUEST['orden']){
 			
@@ -44,8 +45,8 @@ if (!isset($_REQUEST['orden'])){ //si no viene del formulario, no existe array P
 					}else{
 						$campeonato = get_data_form();//Si post cogemos campeonato
 						$respuesta = $campeonato->ADD();//Y lo añadimos
-						new Mensaje($respuesta, '../Controllers/Campeonato_CONTROLLER.php');// y a ver qué ha pasado en la BD
 						$respuesta = $campeonato -> obtenerEmail();
+						new Mensaje($respuesta, '../Controllers/Campeonato_CONTROLLER.php');// y a ver qué ha pasado en la BD
 					}
 				
 			break;
@@ -83,8 +84,15 @@ if (!isset($_REQUEST['orden'])){ //si no viene del formulario, no existe array P
 				
 			case 'SHOWALL':
 					$campeonato = new Campeonato('','','','','');//No necesitamos campeonato para buscar (pero sí para acceder a la BD)
+					$campeonato->_setPeriodo($_REQUEST['Periodo']);
 					$respuesta = $campeonato->SHOWALL();//Todos los datos de la BD estarán aqúi
 					new Campeonato_SHOWALL($respuesta);//Le pasamos todos los datos de la BD			
+			break;
+
+			case 'SHOWALL2':
+					$campeonato = new Campeonato('','','','','');//No necesitamos campeonato para buscar (pero sí para acceder a la BD)
+					$respuesta = $campeonato->SHOWALL2();//Todos los datos de la BD estarán aqúi
+					new Campeonato_SHOWALL2($respuesta);//Le pasamos todos los datos de la BD			
 			break;
 
 			case 'INSCRIBIRSE':
