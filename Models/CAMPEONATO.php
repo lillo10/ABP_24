@@ -171,6 +171,44 @@ class Campeonato{
 		}
 	}
 	
+	function obtenerEmail(){
+		
+		//$sql = "SELECT Email FROM Usuarios u, CampeonatoUsuario c WHERE u.login = c.login and c.idCampeonato='CMP1MA1'";
+		$sql = "SELECT Email FROM Usuarios ";
+		
+		$resultado = $this->mysqli->query($sql);
+		
+		if(!$resultado){
+			return "No se ha podido conectar con la DB";
+		}else{
+			while($fila=$resultado->fetch_row()){
+				$this -> enviarEmail($fila[0]);
+			}
+			return "Mensajes enviados";
+		}
+		
+	}
+	
+	function enviarEmail($para){
+		$titulo = 'Nuevo Campeonato';
+		
+		$this -> limite = DateTime::createFromFormat('Y-m-d', $this -> LimInscrip);
+		$this -> limite = $this -> limite->format('d/m/Y');
+		
+		//$servidor = 'http://localhost/Controllers/Anotarse_Campeonato.php?idCampeonato=' . $this -> idCampeonato;
+		$servidor = "http://padelweb.000webhostapp.com/ABP_24/Controllers/Anotarse_Campeonato.php?idCampeonato=" . $this -> idCampeonato ;
+		
+		$string = 'Se ha iniciado un nuevo campeonato en nuestro cub de pádel. El periodo de duración del campeonato es ' . $this -> Periodo .  
+					'. La fecha límite para la inscripción es el día ' . $this -> limite . '. Puedes anotarte desde el siguiente enlace: ' . $servidor;
+		
+		$contenido = $string;
+		$cabeceras = 'From: padelweb@gmail.com' . "\r\n" .
+			'Reply-To: padelweb@gmail' . "\r\n" .
+			'X-Mailer: PHP/' . phpversion();
+		
+		mail($para, $titulo, $contenido, $cabeceras);
+	}
+	
 	function EDIT(){//Para editar de la BD
 		if(($this->idCampeonato == '')){
 			return 'idCampeonato vacío, introduzca un idCampeonato';
@@ -251,7 +289,19 @@ class Campeonato{
 	
 	function SHOWALL(){//Para mostrar la BD
 		$sql = "SELECT * FROM Campeonato";
+
+		$resultado = $this->mysqli->query($sql);
+		
+		if(!$resultado){
+			return 'No se ha podido conectar con la BD';
+		}
+		
+		return $resultado;
+	}
 	
+	function SHOWALL_INSCRIPCION(){
+		$sql = "SELECT * FROM Campeonato WHERE idCampeonato LIKE '".$this->idCampeonato."%'";
+		echo $sql;
 		$resultado = $this->mysqli->query($sql);
 		
 		if(!$resultado){
