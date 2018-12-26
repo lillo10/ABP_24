@@ -17,6 +17,7 @@
 	include '../Views/Campeonato/Campeonato_SHOWCURRENT.php';
 	include '../Views/Campeonato/Campeonato_SHOWALL.php';
 	include '../Views/Campeonato/Campeonato_SHOWALL2.php';
+	include '../Views/Campeonato/Campeonato_FINAL.php';
 	include '../Views/TablaClasificacion/TablaClasificacion_ADD.php';
 	include '../Views/MESSAGE.php';
 	
@@ -79,7 +80,7 @@ if (!isset($_REQUEST['orden'])){ //si no viene del formulario, no existe array P
 			case 'SHOWCURRENT':
 						$campeonato = new Campeonato($_REQUEST['idCampeonato'],'','','','');//Coger clave del campeonato
 						$respuesta = $campeonato->SHOWCURRENT();
-						new Campeonato_SHOWCURRENT($respuesta);//Mostrar al usuario rellenado
+						new Campeonato_SHOWCURRENT($respuesta);
 			break;
 				
 			case 'SHOWALL':
@@ -125,6 +126,13 @@ if (!isset($_REQUEST['orden'])){ //si no viene del formulario, no existe array P
 						new Mensaje($respuesta, '../Controllers/Campeonato_CONTROLLER.php');
 						
 					
+			break;
+
+			case 'FINAL':
+					$idCampeonato = $_REQUEST['idCampeonato'];
+					$campeonato = new Campeonato($idCampeonato,'','','','');
+					$respuesta = $campeonato->FFINAL();//Todos los datos de la BD estarán aqúi
+					new Campeonato_FINAL($respuesta);//Le pasamos todos los datos de la BD			
 			break;
 				
 			default:// default, se hace un showall

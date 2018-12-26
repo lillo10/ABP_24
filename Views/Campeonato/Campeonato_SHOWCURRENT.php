@@ -10,6 +10,7 @@ class Campeonato_SHOWCURRENT{  // declaración de clase
 	var $clasg2;
 	var $enfg1;
 	var $enfg2;
+	var $idCampeonato;
 
 	// declaración constructor de la clase
 	function __construct($respuesta){
@@ -54,6 +55,9 @@ class Campeonato_SHOWCURRENT{  // declaración de clase
 						<td id='Partidos Perdidos'><?php echo $fila[4]; ?></td>
 						<td id='Puntuacion'><?php echo $fila[5]; ?></td>
 						<td id='idCampeonato'><?php echo $fila[6]; ?></td>
+						<?php
+						$this->idCampeonato = $fila[6];
+						?>
 							
 						
 					</tr>
@@ -170,6 +174,8 @@ class Campeonato_SHOWCURRENT{  // declaración de clase
 				$i++;
 			}?>
 			</table>
+			<br><br>
+			<a href="../Controllers/Campeonato_CONTROLLER.php?orden=FINAL&idCampeonato=<?php echo $this->idCampeonato?>"><h2>Fase Final</h2></a>
 			<br><br><br><br><br><br><br><br>
 			</div>
 			
