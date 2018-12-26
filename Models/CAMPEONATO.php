@@ -301,7 +301,7 @@ class Campeonato{
 	
 	function SHOWALL_INSCRIPCION(){
 		$sql = "SELECT * FROM Campeonato WHERE idCampeonato LIKE '".$this->idCampeonato."%'";
-		echo $sql;
+
 		$resultado = $this->mysqli->query($sql);
 		
 		if(!$resultado){
