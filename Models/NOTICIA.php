@@ -43,7 +43,7 @@
 					if(!$this->mysqli->query($sql)){
 						return "Error en la inserción";
 					}else{
-						return "Inserción realizada";
+						return "Noticia añadida";
 					}
 				}else{
 					return "Ya existe en la base de datos";
