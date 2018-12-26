@@ -17,9 +17,9 @@ if(!isset($_REQUEST['login']) && (!isset($_REQUEST['password']))){//Si no se ha 
 		$respuesta = $usuario->LOGIN();//Se comprueba que exista en la BD
 
 	if($respuesta == 'true'){//Si se ha encontrado ese login con esa contraseña
+		header('Location: ../index.php');//Ahora que se ha logeado se vuelve al index
 		session_start();
 		$_SESSION['login'] = $_REQUEST['login'];//Inicializar session login a lo enviado
-		header('Location: ../index.php');//Ahora que se ha logeado se vuelve al index
 	}else{//Sino
 		include '../Views/MESSAGE.php';
 		new Mensaje($respuesta, './Login_CONTROLLER.php');//Mednsaje que ha dado la consulta en la BD
