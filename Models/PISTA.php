@@ -75,7 +75,7 @@
 		}
 		
 		function EDIT(){
-			$sql = "SELECT * FROM pista WHERE (idPistas = '".$this -> idPista."') ";
+			$sql = "SELECT * FROM Pista WHERE (idPistas = '".$this -> idPista."') ";
 
 			$resultado = $this->mysqli->query($sql);
 			
@@ -113,7 +113,7 @@
 			$resultado = $this->mysqli->query($sql);
 			
 			if($resultado->num_rows == 1){
-				$sql = "DELETE FROM pista WHERE (idPistas = '".$this -> idPista."')";
+				$sql = "DELETE FROM Pista WHERE (idPistas = '".$this -> idPista."')";
 				
 				$this->mysqli->query($sql);
 				
