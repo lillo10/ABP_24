@@ -28,7 +28,7 @@ class Campeonato_SHOWALL{  // declaración de clase
 		
 		<tr>
 						<th>idCampeonato</th>
-						<th>Periodo</th>
+						<th>Fecha Inicio</th>
 						<th>Limite inscripcion</th>
 						<th>Categoria</th>
 						<th>Sexo</th>

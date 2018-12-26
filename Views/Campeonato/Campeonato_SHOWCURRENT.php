@@ -40,7 +40,6 @@ class Campeonato_SHOWCURRENT{  // declaración de clase
 						<th>Partidos Jugados</th>
 						<th>Partidos Ganados</th>
 						<th>Partidos Perdidos</th>
-						<th>Partidos Empatados</th>
 						<th>Puntuacion</th>
 						<th>Id Campeonato</th>
 		</tr>
@@ -53,9 +52,8 @@ class Campeonato_SHOWCURRENT{  // declaración de clase
 						<td id='Partidos Jugados'><?php echo $fila[2]; ?></td>
 						<td id='Partidos Ganados'><?php echo $fila[3]; ?></td>
 						<td id='Partidos Perdidos'><?php echo $fila[4]; ?></td>
-						<td id='Partidos Empatados'><?php echo $fila[5]; ?></td>
-						<td id='Puntuacion'><?php echo $fila[6]; ?></td>
-						<td id='idCampeonato'><?php echo $fila[7]; ?></td>
+						<td id='Puntuacion'><?php echo $fila[5]; ?></td>
+						<td id='idCampeonato'><?php echo $fila[6]; ?></td>
 							
 						
 					</tr>
@@ -113,7 +111,6 @@ class Campeonato_SHOWCURRENT{  // declaración de clase
 						<th>Partidos Jugados</th>
 						<th>Partidos Ganados</th>
 						<th>Partidos Perdidos</th>
-						<th>Partidos Empatados</th>
 						<th>Puntuacion</th>
 						<th>Id Campeonato</th>
 		</tr>
@@ -126,9 +123,8 @@ class Campeonato_SHOWCURRENT{  // declaración de clase
 						<td id='Partidos Jugados'><?php echo $fila[2]; ?></td>
 						<td id='Partidos Ganados'><?php echo $fila[3]; ?></td>
 						<td id='Partidos Perdidos'><?php echo $fila[4]; ?></td>
-						<td id='Partidos Empatados'><?php echo $fila[5]; ?></td>
-						<td id='Puntuacion'><?php echo $fila[6]; ?></td>
-						<td id='idCampeonato'><?php echo $fila[7]; ?></td>
+						<td id='Puntuacion'><?php echo $fila[5]; ?></td>
+						<td id='idCampeonato'><?php echo $fila[6]; ?></td>
 							
 						
 					</tr>

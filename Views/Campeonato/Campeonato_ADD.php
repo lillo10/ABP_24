@@ -25,7 +25,7 @@ class Campeonato_ADD{  // declaración de clase
 						<tdi>idCampeonato</tdi><tdi><input required type="text" id="idCampeonato" name="idCampeonato" size="12" maxlength="9"/></tdi>
 					</tri>
 					<trp>
-						<tdp>Periodo</tdp><tdp><input required type="text" id="Periodo" name="Periodo" size="23" maxlength="23"/></tdp>
+						<tdp>Fecha Inicio</tdp><tdp><input required type="date" id="Periodo" name="Periodo" size="23" maxlength="23"/></tdp>
 					</trp>
 					<tri>
 						<tdi>Limite de inscripcion</tdi><tdi><input required type="date" id="LimInscrip" name="LimInscrip" size="15" maxlength="10"/></tdi>
