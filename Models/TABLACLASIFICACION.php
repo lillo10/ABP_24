@@ -70,7 +70,7 @@ class TablaClasificacion{
 					}
 
 					
-					$sql = "INSERT INTO Tablaclasificacion (NombrePareja, PartidosJugados, PartidosGanados, PartidosPerdidos, PartidosEmpatados, Puntuacion, idCampeonato, Grupo) VALUES ('$NombrePareja',0, 0, 0, 0, 0,'$idCampeonato','$grupo');";
+					$sql = "INSERT INTO Tablaclasificacion (NombrePareja, PartidosJugados, PartidosGanados, PartidosPerdidos, Puntuacion, idCampeonato, Grupo) VALUES ('$NombrePareja', 0, 0, 0, 0,'$idCampeonato','$grupo');";
 					$respuesta = $this->mysqli->query($sql);
 
 					if (!$respuesta) {
