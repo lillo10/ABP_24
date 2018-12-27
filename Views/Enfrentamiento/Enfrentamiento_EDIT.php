@@ -33,8 +33,12 @@ class Enfrentamiento_EDIT{  // declaración de clase
 						<tdi>Pareja 2</tdi><tdi><input readonly type="text" name="Pareja2" size="12" value="<?php echo $this->enfrentamiento->_getPareja2(); ?>"/></tdi>
 					</trp>
 					<tri>
-						<tdi>Resultado</tdi><tdi><input type="text" name="Resultado" size="12" value="<?php echo $this->enfrentamiento->_getResultado(); ?>"/></tdi>
-						<span>En Resultado poner 1,2 o X</span>
+						<tdi>Ganador</tdi><tdi>
+							<select name="Resultado">
+								<option selected value="0"> Elige una opción </option>
+									<option value="1">Pareja 1</option> 
+       								<option value="2">Pareja 2</option> 
+							</select></tdi>
 					</tri>
 					<trp>
 						<tdi>Id Campeonato</tdi><tdi><input readonly type="text" name="idCampeonato" size="12" value="<?php echo $this->enfrentamiento->_getidCampeonato(); ?>"/></tdi>

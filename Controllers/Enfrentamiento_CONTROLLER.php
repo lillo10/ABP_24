@@ -44,7 +44,7 @@ if (!isset($_REQUEST['orden'])){
 						$enfrentamiento = get_data_form();//Coger datos
 						$idCampeonato = $enfrentamiento->_getidCampeonato();
 						$respuesta = $enfrentamiento->EDIT();//Actualizarlos
-						new Mensaje($respuesta, '../Controllers/Campeonato_CONTROLLER.php?orden=SHOWCURRENT;?idCampeonato=$idCampeonato');//A ver que pasa con la BD, qué intrigante
+						new Mensaje($respuesta, '../Controllers/Campeonato_CONTROLLER.php?orden=SHOWCURRENT&idCampeonato='.$idCampeonato);
 					}				
 			break;
 		}

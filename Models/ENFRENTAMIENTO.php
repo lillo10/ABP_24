@@ -166,16 +166,6 @@ class Enfrentamiento{
 				$pp2 = $this->mysqli->query($sql);
 				$data = $pp2->fetch_row();
 				$pp2 = $data[0];
-				//Partidos empatados Pareja 1
-				$sql = "SELECT PartidosEmpatados FROM Tablaclasificacion WHERE idCampeonato = '$idCampeonato' AND NombrePareja = '$Pareja1';";
-				$pe1 = $this->mysqli->query($sql);
-				$data = $pe1->fetch_row();
-				$pe1 = $data[0];
-				//Partidos empatados Pareja 2
-				$sql = "SELECT PartidosEmpatados FROM Tablaclasificacion WHERE idCampeonato = '$idCampeonato' AND NombrePareja = '$Pareja2';";
-				$pe2 = $this->mysqli->query($sql);
-				$data = $pe2->fetch_row();
-				$pe2 = $data[0];
 
 
 				if ($Resultado == 1) {
@@ -204,22 +194,6 @@ class Enfrentamiento{
 
 					//Actualizamos clasificacion Pareja 2
 					$sql = "UPDATE Tablaclasificacion SET PartidosJugados = '$pj2' , PartidosGanados = '$pg2' , Puntuacion = '$pu2' WHERE idCampeonato = '$idCampeonato' AND NombrePareja = '$Pareja2'";
-
-					$this->mysqli->query($sql);
-				}
-
-				if($Resultado == 'X') {
-					$pe2=$pe2+1;
-					$pu1=$pu1+1;
-					$pu2=$pu2+1;
-					$pe1=$pe1+1;
-					//Actualizamos clasificacion Pareja 1
-					$sql = "UPDATE Tablaclasificacion SET PartidosJugados = '$pj1' , PartidosEmpatados = '$pe1' , Puntuacion = '$pu1' WHERE idCampeonato = '$idCampeonato' AND NombrePareja = '$Pareja1'";
-
-					$this->mysqli->query($sql);
-
-					//Actualizamos clasificacion Pareja 2
-					$sql = "UPDATE Tablaclasificacion SET PartidosJugados = '$pj2' , PartidosEmpatados = '$pe2' , Puntuacion = '$pu2' WHERE idCampeonato = '$idCampeonato' AND NombrePareja = '$Pareja2'";
 
 					$this->mysqli->query($sql);
 				}
