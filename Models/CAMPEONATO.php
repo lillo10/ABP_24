@@ -354,6 +354,14 @@ class Campeonato{
 	
 	function GENPARTIDOS(){
 		$idCampeonato = mysqli_real_escape_string($this->mysqli, $this->idCampeonato);
+		
+		//Fecha inicio campeonato
+		$sql = "SELECT Periodo FROM Campeonato WHERE idCampeonato = '$idCampeonato';";
+		$resultado = $this->mysqli->query($sql);
+		$fila = $resultado->fetch_row();
+		$fechainicio = $fila[0];
+		
+
 		//Parejas grupo 1
 		$sql = "SELECT NombrePareja FROM Tablaclasificacion WHERE Grupo = 1 AND idCampeonato = '$idCampeonato';";
 		$resultado = $this->mysqli->query($sql);
@@ -363,6 +371,7 @@ class Campeonato{
 			$grupo1[$i] = $fila[0];
 			$i++; 
 		}
+
 		//Parejas grupo 2
 		$sql = "SELECT NombrePareja FROM Tablaclasificacion WHERE Grupo = 2 AND idCampeonato = '$idCampeonato';";
 		$resultado = $this->mysqli->query($sql);
@@ -375,23 +384,37 @@ class Campeonato{
 
 		//Generar enfrentamientos grupo 1
 		$longitud = count($grupo1);
+		$x = 0;
+		$fecha = $fechainicio;
 		for ($i=0; $i <($longitud-1) ; $i++) { 
 			for ($j=($i+1); $j <$longitud ; $j++) {
+				if ($x >= 2) {
+					$x = 0;
+					$fecha = date("Y-m-d",strtotime($fecha)+86400);
+				}
 				$pareja1 = $grupo1[$i];
 				$pareja2 = $grupo1[$j]; 
-				$sql = "INSERT INTO Enfrentamiento (Fecha, Grupo, Pareja1, Pareja2, Resultado1, idCampeonato) VALUES (' ', 1, '$pareja1', '$pareja2', '','$idCampeonato');";
-				$this->mysqli->query($sql); 
+				$sql = "INSERT INTO Enfrentamiento (Fecha, Grupo, Pareja1, Pareja2, Resultado1, idCampeonato) VALUES ('$fecha', 1, '$pareja1', '$pareja2', '','$idCampeonato');";
+				$this->mysqli->query($sql);
+				$x++;
 			}
 		}
 
 		//Generar enfentamientos grupo 2
 		$longitud = count($grupo2);
+		$x = 0;
+		$fecha = $fechainicio;
 		for ($i=0; $i <($longitud-1) ; $i++) { 
 			for ($j=($i+1); $j <$longitud ; $j++) {
+				if ($x >= 2) {
+					$x = 0;
+					$fecha = date("Y-m-d",strtotime($fecha)+86400);
+				}
 				$pareja1 = $grupo2[$i];
 				$pareja2 = $grupo2[$j]; 
-				$sql = "INSERT INTO Enfrentamiento (Fecha, Grupo, Pareja1, Pareja2, Resultado1, idCampeonato) VALUES (' ', 2, '$pareja1', '$pareja2', '','$idCampeonato');";
+				$sql = "INSERT INTO Enfrentamiento (Fecha, Grupo, Pareja1, Pareja2, Resultado1, idCampeonato) VALUES ('$fecha', 2, '$pareja1', '$pareja2', '','$idCampeonato');";
 				$this->mysqli->query($sql); 
+				$x++;
 			}
 		}
 		
