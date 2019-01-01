@@ -47,13 +47,18 @@
 							<td> 
 								<form action="../Controllers/Partido_CONTROLLER.php" method="post" name="showall">
 									<input type="hidden" name="idPartido" value="<?php echo $fila[0]?>"/>
-									<input type="hidden" name="NumPista" value="<?php echo $fila[1]?>"/>
-									<input type="hidden" name="fechahora" value="<?php echo $fila[2]?>"/>
-									<input type="hidden" name="jugadores" value="<?php echo $fila[3]?>"/>
+									<input type="hidden" name="fechahora" value="<?php echo $fila[1]?>"/>
+									<input type="hidden" name="jugadores" value="<?php echo $fila[2]?>"/>
+									<input type="hidden" name="NumPista" value="<?php echo $fila[3]?>"/>
 									
-									<button onclick="document.forms[1].submit" name="action" value="putUser">  <img src="../img/edit.png" height="30px"/> </button>  
-									<button onclick="document.forms[1].submit" name="action" value="delete">  <img src="../img/erase.png" height="30px"/> </i> </button> 
-									<button onclick="document.forms[1].submit" name="action" value="showUsers">  <img src="../img/detail.png" height="30px"/> </button>
+									<button onclick="document.forms[1].submit" name="action" value="putUser">  <img src="../img/edit.png" height="15px"/> </button>  
+									<button onclick="document.forms[1].submit" name="action" value="delete2">  <img src="../img/delete.png" height="15px"/> </i> </button> 
+									<button onclick="document.forms[1].submit" name="action" value="showUsers">  <img src="../img/detail.png" height="15px"/> </button>
+									<?php
+									include_once '../Functions/Autenticacion.php';
+									if(esAdmin()){
+									echo "<button onclick=\"document.forms[1].submit\" name=\"action\" value=\"delete\">  <img src=\"../img/erase.png\" height=\"15px\"/> </i> </button>";
+									}?>
 								</form>
 							</td>
 							</tr>
