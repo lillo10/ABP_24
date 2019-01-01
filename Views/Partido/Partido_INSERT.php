@@ -38,10 +38,6 @@ class Partido_INSERT{  // declaración de clase
 						</select></tdp>
 						</trp>
 
-						<tri>
-							<tdi>Id-Pista</tdi><tdi><input required type="text" id="idPista" name="idPista"/></tdi>
-						</tri>
-
 						<button onClick="document.getElementById('formularioInsertarPartido').submit()" type="submit"/><img src="../img/login.png" height="30px"/>
 					</table>
 				</form>
