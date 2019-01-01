@@ -100,18 +100,10 @@ ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PadelDB`.`Partido` (
   `idPartido` INT NOT NULL AUTO_INCREMENT,
-  `Pista_Fecha/Hora` DATETIME NOT NULL,
-  `Pista_numPistas` INT NOT NULL,
+  `Pista_Fecha/Hora` DATETIME(1) NOT NULL,
   `Jugadores` INT NOT NULL,
-  PRIMARY KEY (`idPartido`)/*,
-    FOREIGN KEY (`Pista_numPistas`)
-    REFERENCES `PadelDB`.`Pista` (`num_Pista`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-    FOREIGN KEY (`Pista_Fecha/Hora`)
-    REFERENCES `PadelDB`.`Pista` (`Fecha/Hora`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE*/)
+  `Pista` INT,
+  PRIMARY KEY (`idPartido`))
 ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 
