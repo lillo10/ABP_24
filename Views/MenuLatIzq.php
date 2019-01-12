@@ -58,14 +58,6 @@ if(autenticado()){//Se debería usar un switch que de los permisos pero de momen
 			</div>
 	
 			<div class="menudespleg">
-				<a href=''><button class="menu">Clases</button></a>
-					<div class="opciones">
-						<a href="">Mis clases</a>
-						<a href="">Lista de clases</a>
-					</div>
-			</div>
-
-			<div class="menudespleg">
 				<a href=''><button class="menu">Gestionar Escuela Deportiva</button></a>
 					<div class="opciones">
 						<a href="../Controllers/EscuelaDeportiva_CONTROLLER.php?action=myEscuelas">Ver Escuela Deportiva</a>
