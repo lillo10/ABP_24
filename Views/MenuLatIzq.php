@@ -18,7 +18,7 @@ if(autenticado()){//Se debería usar un switch que de los permisos pero de momen
 					</div>
 			</div>
 			
-			<?php if(esAdmin()){ ?>
+			<?php if(esAdmin() || esEntrenador()){ ?>
 				<div class="menudespleg">
 					<a href=''><button class="menu">Pistas</button></a>
 						<div class="opciones">
@@ -68,8 +68,18 @@ if(autenticado()){//Se debería usar un switch que de los permisos pero de momen
 			<div class="menudespleg">
 				<a href=''><button class="menu">Gestionar Escuela Deportiva</button></a>
 					<div class="opciones">
-						<a href="">Consultar Escuela Deportiva</a>
-						<a href="">Gestionar Escuela Deportiva</a>
+						<a href="../Controllers/EscuelaDeportiva_CONTROLLER.php?action=myEscuelas">Ver Escuela Deportiva</a>
+						<?php
+						if(!esEntrenador()){?>
+							<a href="../Controllers/EscuelaDeportiva_CONTROLLER.php?action=misClases">Mis Clases</a>
+						<?php
+						}?>
+						
+						<?php
+						if(esEntrenador()){?>
+							<a href="../Controllers/EscuelaDeportiva_CONTROLLER.php?action=clasePriv">Mis Clases Privadas</a>
+						<?php
+						}?>
 					</div>
 			</div>
 	
