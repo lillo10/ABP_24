@@ -424,18 +424,18 @@ VALUES ('27', '3', 'SI', '2018-12-03 12:00:00', '7.50');
 
 /* Clases */
 INSERT INTO `Clase` (idClase, Pista, Fecha, Precio, numJugadores, Entrenador_login, TIPO)
-VALUES ('1', '1', '2018-12-01 09:00:00','5', '0', 'Roger', 'PUBLICA');
+VALUES ('1', '1', '2018-12-01 09:00:00','50', '0', 'Roger', 'PUBLICA');
 INSERT INTO `Clase` (idClase, Pista, Fecha, Precio, numJugadores, Entrenador_login, TIPO)
-VALUES ('2', '1', '2018-12-02 09:00:00','5', '0', 'Pablo', 'PUBLICA');
+VALUES ('2', '1', '2018-12-02 09:00:00','50', '0', 'Pablo', 'PUBLICA');
 INSERT INTO `Clase` (idClase, Pista, Fecha, Precio, numJugadores, Entrenador_login, TIPO)
-VALUES ('3', '1', '2018-12-03 09:00:00','5', '0', 'Serena', 'PUBLICA');
+VALUES ('3', '1', '2018-12-03 09:00:00','50', '0', 'Serena', 'PUBLICA');
 
 INSERT INTO `Clase` (idClase, Pista, Fecha, Precio, numJugadores, Entrenador_login, TIPO)
-VALUES ('4', '2', '2018-12-01 09:00:00','5', '0', 'Serena', 'PRIVADA');
+VALUES ('4', '2', '2018-12-01 09:00:00','50', '0', 'Serena', 'PRIVADA');
 INSERT INTO `Clase` (idClase, Pista, Fecha, Precio, numJugadores, Entrenador_login, TIPO)
-VALUES ('5', '2', '2018-12-02 09:00:00','5', '0', 'Roger', 'PRIVADA');
+VALUES ('5', '2', '2018-12-02 09:00:00','50', '0', 'Roger', 'PRIVADA');
 INSERT INTO `Clase` (idClase, Pista, Fecha, Precio, numJugadores, Entrenador_login, TIPO)
-VALUES ('6', '2', '2018-12-03 09:00:00','5', '0', 'Pablo', 'PRIVADA');
+VALUES ('6', '2', '2018-12-03 09:00:00','50', '0', 'Pablo', 'PRIVADA');
 
 /* Partidos Patrocinados*/
 INSERT INTO `Partido` (idPartido, `Pista_Fecha/Hora`, Jugadores, Pista)
