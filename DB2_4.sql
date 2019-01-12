@@ -67,18 +67,14 @@ ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 -- Table `PadelDB`.`Clase`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PadelDB`.`Clase` (
-  `idClase` INT NOT NULL,
+  `idClase` INT NOT NULL AUTO_INCREMENT,
   `Pista` VARCHAR(45) NOT NULL,
   `Fecha` DATETIME NOT NULL,
   `Precio` INT(3) NOT NULL,
+  `numJugadores` INT(3) NOT NULL,
   `Entrenador_login` VARCHAR(14) NOT NULL,
-  PRIMARY KEY (`idClase`),
-  INDEX `fk_Clase_Usuarios1_idx` (`Entrenador_login` ASC),
-  CONSTRAINT `fk_Clase_Ususarios1`
-    FOREIGN KEY (`Entrenador_login`)
-    REFERENCES `PadelDB`.`Usuarios` (`login`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  `TIPO` VARCHAR(7) NOT NULL,
+  PRIMARY KEY (`idClase`))
 ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 
@@ -144,6 +140,7 @@ CREATE TABLE IF NOT EXISTS `PadelDB`.`Clase_has_Usuario` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
 
 -- -----------------------------------------------------
 -- Table `PadelDB`.`Reserva`
@@ -381,13 +378,13 @@ VALUES ('juan','juan','92345673E','Juan','Amil','645566667','FALSE','FALSE');
 
 /*Usuarios-Entrenadores*/
 INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
-VALUES ('harry','harry','92345673E','Harry','Potter','645566667','FALSE','TRUE');
+VALUES ('Federer','Federer','92345673E','Federer','Roger','645566667','FALSE','TRUE');
 
 INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
-VALUES ('draco','draco','92345673A','Draco','Malfoy','645566657','FALSE','TRUE');
+VALUES ('Williams','Williams','92345673A','Williams','Serena','645566657','FALSE','TRUE');
 
 INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
-VALUES ('hermione','hermione','92345673B','Hermione','Granger','645566647','FALSE','TRUE');
+VALUES ('Pablo','Pablo','92345673B','Pablo','Escobar','645566647','FALSE','TRUE');
 
 
 
@@ -550,7 +547,7 @@ VALUES ('27', '3', 'SI', '2018-12-03 12:00:00', '7.50');
 
 
 
-/*Clases*/
+/*Clases
 
 INSERT INTO Clase (idClase, Pista, Fecha, Precio, Entrenador_login)
 VALUES ('1', '1', '2018-12-01 09:00:00','500', 'Harry');
@@ -559,7 +556,7 @@ INSERT INTO Clase (idClase, Pista, Fecha, Precio, Entrenador_login)
 VALUES ('2', '2', '2018-12-01 09:00:00','500', 'Draco');
 
 INSERT INTO Clase (idClase, Pista, Fecha, Precio, Entrenador_login)
-VALUES ('3', '3', '2018-12-01 09:00:00','500', 'Hermione');
+VALUES ('3', '3', '2018-12-01 09:00:00','500', 'Hermione');*/
 
 
 
