@@ -6,3 +6,8 @@ los enfrentamientos de un campeonato.
 Hay dos campeonatos, uno solo con dos categorías y otro con tres categorías y para cada una de ellas
 masculino, femenino y mixto. En este último, en la categoría 1 masculina hay 8 parejas inscritas 
 conformando dos grupos de 4, y ya están todos los resultados y la clasificación final. 
+
+Para que cuando se cree una noticia y se inicie un nuevo campeonato se envie un correo a todos los 
+usuarios del sistema, es necesario crear acceder a la pagina desde el siguiente enlace
+https://padelweb.000webhostapp.com/ABP_24/Controllers/Login_CONTROLLER.php ya que desde xampp no es 
+posible enviar emails.
