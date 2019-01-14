@@ -235,35 +235,35 @@ ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 /* INSERTS*/
 /*Usuarios*/
-INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
-VALUES ('admin','admin','12345678A','Jon','Florence','963487526','TRUE','FALSE');
+INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Administrador`, `Entrenador`) 
+VALUES ('admin','admin','12345678A','Jon','Florence','963487526', '', 'TRUE','FALSE');
 
-INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
-VALUES ('Federer','Federer','92345673E','Roger','Federer','645566667','FALSE','TRUE');
+INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Administrador`, `Entrenador`) 
+VALUES ('Federer','Federer','92345673E','Roger','Federer','645566667', '', 'FALSE','TRUE');
 
-INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
-VALUES ('Williams','Williams','92345673A','Serena','Williams','645566657','FALSE','TRUE');
+INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Administrador`, `Entrenador`) 
+VALUES ('Williams','Williams','92345673A','Serena','Williams','645566657', '', 'FALSE','TRUE');
 
-INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
-VALUES ('Pablo','Pablo','92345673B','Pablo','Quintero','645566647','FALSE','TRUE');
+INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Administrador`, `Entrenador`) 
+VALUES ('Pablo','Pablo','92345673B','Pablo','Quintero','645566647', '', 'FALSE','TRUE');
 
-INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
-VALUES ('angel','angel','12345673E','Angel','Lillo','646666667','FALSE','FALSE');
+INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Administrador`, `Entrenador`) 
+VALUES ('angel','angel','12345673E','Angel','Lillo','646666667', '', 'FALSE','FALSE');
 
-INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
-VALUES ('jorge','jorge','12345672E','Jorge','Maza','646662667','FALSE','FALSE');
+INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Administrador`, `Entrenador`) 
+VALUES ('jorge','jorge','12345672E','Jorge','Maza','646662667', '', 'FALSE','FALSE');
 
-INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
-VALUES ('fran','fran','12343673E','Fran','Gomez','646616667','FALSE','FALSE');
+INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Administrador`, `Entrenador`) 
+VALUES ('fran','fran','12343673E','Fran','Gomez','646616667', 'gofrango96@gmail.com', 'FALSE','FALSE');
 
-INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
-VALUES ('abraham','abraham','12145673E','Abraham','Arce','646666867','FALSE','FALSE');
+INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Administrador`, `Entrenador`) 
+VALUES ('abraham','abraham','12145673E','Abraham','Arce','646666867', '', 'FALSE','FALSE');
 
-INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
-VALUES ('adrian','adrian','12395673E','Adrian','Carballido','646676667','FALSE','FALSE');
+INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Administrador`, `Entrenador`) 
+VALUES ('adrian','adrian','12395673E','Adrian','Carballido','646676667', '', 'FALSE','FALSE');
 
-INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Administrador`, `Entrenador`) 
-VALUES ('juan','juan','92345673E','Juan','Amil','645566667','FALSE','FALSE');
+INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Administrador`, `Entrenador`) 
+VALUES ('juan','juan','92345673E','Juan','Amil','645566667', '', 'FALSE', 'FALSE');
 
 /*Campeonatos*/
 /*1*/
