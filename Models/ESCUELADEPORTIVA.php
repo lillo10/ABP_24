@@ -120,9 +120,9 @@ class Escueladeportiva{
 
 	function _escuelaMisClases(){//Muestra todas las clases de la escuela deportiva
 		$usuario = mysqli_real_escape_string($this->mysqli, $_SESSION['login']);
-		$sql = "SELECT idClase, Pista, Fecha, Precio, numJugadores, Entrenador_login, TIPO FROM Clase AS C , Clase_has_Usuario AS U WHERE (U.Clase_idClase = C.idClase AND U.Usuario_login = '$usuario')";
+		$sql = "SELECT C.idClase, C.Pista, C.Fecha, C.Precio, C.numJugadores, C.Entrenador_login, C.TIPO FROM Clase AS C , Clase_has_Usuario AS U WHERE (U.Clase_idClase = C.idClase AND U.Usuario_login = '$usuario')";
 		$resultado = $this->mysqli->query($sql);
-		if($resultado->num_rows == 1){
+		if($resultado){
 			return $resultado;
 		}else{
 			return "La escuela deportiva aun no tiene asignada clases";
@@ -346,7 +346,8 @@ VALUES ('$numPista', '$fecha_hora', '50', '0', '$entrenador', 'PUBLICA')";
 		$fecha_hora = mysqli_real_escape_string($this->mysqli, $this->Fecha);
 		$sql = "SELECT TIPO FROM Clase WHERE (idClase = '$idClase')";
 		$resultado = $this->mysqli->query($sql);
-		if($resultado == PUBLICA){
+		$fila=$resultado->fetch_row();
+		if($fila[0] == "PUBLICA"){
 			return TRUE;
 		}
 		else{
