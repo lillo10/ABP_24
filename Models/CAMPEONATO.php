@@ -192,13 +192,16 @@ class Campeonato{
 	function enviarEmail($para){
 		$titulo = 'Nuevo Campeonato';
 		
+		$this -> Periodo = DateTime::createFromFormat('Y-m-d', $this -> LimInscrip);
+		$this -> Periodo = $this -> Periodo->format('d/m/Y');
+		
 		$this -> limite = DateTime::createFromFormat('Y-m-d', $this -> LimInscrip);
 		$this -> limite = $this -> limite->format('d/m/Y');
 		
 		//$servidor = 'http://localhost/Controllers/Anotarse_Campeonato.php?idCampeonato=' . $this -> idCampeonato;
 		$servidor = "http://padelweb.000webhostapp.com/ABP_24/Controllers/Anotarse_Campeonato.php?idCampeonato=" . $this -> idCampeonato ;
 		
-		$string = 'Se ha iniciado un nuevo campeonato en nuestro cub de pádel. El periodo de duración del campeonato es ' . $this -> Periodo .  
+		$string = 'Se ha iniciado un nuevo campeonato en nuestro cub de pádel. El campeonato comienza el día ' . $this -> Periodo .  
 					'. La fecha límite para la inscripción es el día ' . $this -> limite . '. Puedes anotarte desde el siguiente enlace: ' . $servidor;
 		
 		$contenido = $string;
