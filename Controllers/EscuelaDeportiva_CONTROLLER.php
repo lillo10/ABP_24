@@ -62,7 +62,7 @@ else{
 		case 'putUser'://Funciona
 			$respuesta = $escuela->_apuntarUsuarioClaseEscuela($_REQUEST['idClase']);
 			include '../Views/MESSAGE.php';
-			new Mensaje($respuesta, '../Controllers/Index_CONTROLLER.php');
+			new Mensaje($respuesta, "../Controllers/EscuelaDeportiva_CONTROLLER.php?action=myEscuelas");
 		break;
 
 		case 'search'://Funciona
