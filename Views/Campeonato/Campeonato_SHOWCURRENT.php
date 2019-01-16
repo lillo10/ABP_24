@@ -42,7 +42,6 @@ class Campeonato_SHOWCURRENT{  // declaración de clase
 						<th>Partidos Ganados</th>
 						<th>Partidos Perdidos</th>
 						<th>Puntuacion</th>
-						<th>Id Campeonato</th>
 		</tr>
 			<?php		
 				while($fila = $this->clasg1->fetch_row()){//Mientras haya filas, se coje una y se muestra
@@ -54,7 +53,6 @@ class Campeonato_SHOWCURRENT{  // declaración de clase
 						<td id='Partidos Ganados'><?php echo $fila[3]; ?></td>
 						<td id='Partidos Perdidos'><?php echo $fila[4]; ?></td>
 						<td id='Puntuacion'><?php echo $fila[5]; ?></td>
-						<td id='idCampeonato'><?php echo $fila[6]; ?></td>
 						<?php
 						$this->idCampeonato = $fila[6];
 						?>
@@ -76,7 +74,6 @@ class Campeonato_SHOWCURRENT{  // declaración de clase
 						<th>Pareja1</th>
 						<th>Pareja2</th>
 						<th>Resultado</th>
-						<th>Id Campeonato</th>
 						
 						<th>Editar</th>
 		</tr>
@@ -91,7 +88,7 @@ class Campeonato_SHOWCURRENT{  // declaración de clase
 						<input type='hidden' name='Pareja1' value="<?php echo $fila[2]; ?>"><td id='Pareja1'><?php echo $fila[2]; ?></td></input>
 						<input type='hidden' name='Pareja2' value="<?php echo $fila[3]; ?>"><td id='Pareja2'><?php echo $fila[3]; ?></td></input>
 						<td id='Resultado'><?php echo $fila[4]; ?></td>
-						<input type='hidden' name='idCampeonato' value="<?php echo $fila[5]; ?>"><td id='idCampeonato'><?php echo $fila[5]; ?></td></input>
+						<input type='hidden' name='idCampeonato' value="<?php echo $fila[5]; ?>"></input>
 							
 						<td>
 							<input type='hidden' id="oculto<?php echo $i; ?>" name='orden' value=''/>
