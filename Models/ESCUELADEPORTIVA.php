@@ -131,10 +131,13 @@ class Escueladeportiva{
 
 	function _insertarClase(){
 		$existe = $this->_checkDisponibilidadEscuela();
+		$puede = $this->_checkDisponibilidadEntrenador();
 		if($existe == "FALSE"){
 			return 'Esta clase no existe o no está disponible el horario';
-		}
-		else{
+		}else if($puede == "FALSE"){
+			return 'El entrenador no tiene ese horario disponible';
+
+		}else{
 			$fecha_hora = mysqli_real_escape_string($this->mysqli, $this->Fecha);
 			$numPista = mysqli_real_escape_string($this->mysqli, $this->Pista);
 			$entrenador = mysqli_real_escape_string($this->mysqli, $this->Entrenador_login);
@@ -372,11 +375,14 @@ VALUES ('$numPista', '$fecha_hora', '50', '0', '$entrenador', 'PUBLICA')";
 
 	function _insertarClasePrivada(){
 		$existe = $this->_checkDisponibilidadEscuela();
+		$puede = $this->_checkDisponibilidadEntrenador();
 		$usuario = mysqli_real_escape_string($this->mysqli, $_SESSION['login']);
 		if($existe == "FALSE"){
 			return 'Esta clase no existe o no está disponible el horario';
-		}
-		else{
+		}else if($puede == "FALSE"){
+			return 'El entrenador no tiene ese horario disponible';
+
+		}else{
 			$fecha_hora = mysqli_real_escape_string($this->mysqli, $this->Fecha);
 			$numPista = mysqli_real_escape_string($this->mysqli, $this->Pista);
 			$entrenador = mysqli_real_escape_string($this->mysqli, $this->Entrenador_login);
@@ -391,5 +397,20 @@ VALUES ('$numPista', '$fecha_hora', '50', '0', '$usuario', 'PRIVADA')";
 				return 'Clase promocionada correctamente';
 			}
 		}
+	}
+
+	function _checkDisponibilidadEntrenador(){
+		$fecha_hora = mysqli_real_escape_string($this->mysqli, $this->Fecha);
+		$usuario = mysqli_real_escape_string($this->mysqli, $this->Entrenador_login);
+
+		$sql = "SELECT COUNT(*) FROM Clase WHERE (`Fecha` = '$fecha_hora' AND `Entrenador_login` = '$usuario')";
+		$resultado = $this->mysqli->query($sql);
+		$fila = $resultado->fetch_row();
+		if($fila[0] == 1)
+			return "FALSE";
+		else if(!$resultado)
+			return "FAILED";
+		else
+			return "TRUE";
 	}
 }
