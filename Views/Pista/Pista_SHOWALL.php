@@ -17,7 +17,8 @@
 			include '../Views/MenuLatIzq.php';
 
 ?>
-		<section  id="showall" >
+		<div class="general">
+			<section  id="showall" >
 			<h1> LISTA DE PISTAS </h1>
 			 <table>
 				<!-- <thead> -->
@@ -129,6 +130,8 @@
 				<!-- </tbody>
 			</table> -->
 		</section>
+		</div>
+		
 
 <?php
 			include '../Views/Footer.php';
