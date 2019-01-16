@@ -239,7 +239,7 @@ INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefo
 VALUES ('admin','admin','12345678A','Jon','Florence','963487526', '', 'TRUE','FALSE');
 
 INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Administrador`, `Entrenador`) 
-VALUES ('Federer','Federer','92345673E','Roger','Federer','645566667', '', 'FALSE','TRUE');
+VALUES ('Roger','Roger','92345673E','Roger','Federer','645566667', '', 'FALSE','TRUE');
 
 INSERT INTO `Usuarios`(`login`, `password`, `DNI`, `Nombre`, `Apellido`, `Telefono`, `Email`, `Administrador`, `Entrenador`) 
 VALUES ('Williams','Williams','92345673A','Serena','Williams','645566657', '', 'FALSE','TRUE');
