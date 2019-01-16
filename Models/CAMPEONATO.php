@@ -99,7 +99,8 @@ class Campeonato{
 			return 'idCampeonato vacío, introduzca un idCampeonato';
 		}else{
 			$idCampeonato = mysqli_real_escape_string($this->mysqli, $this->idCampeonato);
-			$sql = "SELECT * FROM Campeonato WHERE idCampeonato LIKE '$idCampeonato'";
+			$Periodo = mysqli_real_escape_string($this->mysqli, $this->Periodo);
+			$sql = "SELECT * FROM Campeonato WHERE idCampeonato LIKE '$idCampeonato' OR Periodo = '$Periodo'";
 			
 			$resultado = $this->mysqli->query($sql);
 			
@@ -165,7 +166,7 @@ class Campeonato{
 					return 'Campeonato añadido';
 
 				}else{
-					return 'El idCampeonato introducido ya existe';
+					return 'El idCampeonato introducido ya existe o ya hay un campeoanto con esa fecha';
 				}
 			}
 		}
