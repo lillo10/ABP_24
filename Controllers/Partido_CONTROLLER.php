@@ -42,19 +42,19 @@ else{
 					$partido->_setJugadores(0);
 					$respuesta = $partido->_insertarPartido();
 					include '../Views/MESSAGE.php';
-					new Mensaje($respuesta, '../Controllers/Index_CONTROLLER.php');
+					new Mensaje($respuesta, "../Controllers/Partido_CONTROLLER.php?action=list");
 				}
 			}
 			else{
 				include '../Views/MESSAGE.php';
-				new Mensaje("Solo un administrador puede crear partidos", '../Controllers/Index_CONTROLLER.php');
+				new Mensaje("Solo un administrador puede crear partidos", "../Controllers/Partido_CONTROLLER.php?action=list");
 			}
 		break;
 
 		case 'putUser':
 			$respuesta = $partido->_apuntarUsuario($_REQUEST['idPartido']);
 			include '../Views/MESSAGE.php';
-			new Mensaje($respuesta, '../Controllers/Index_CONTROLLER.php');
+			new Mensaje($respuesta, "../Controllers/Partido_CONTROLLER.php?action=list");
 		break;
 
 		case 'search':
@@ -91,13 +91,13 @@ else{
 		case 'delete':
 			$respuesta = $partido->_deletePartido($_REQUEST['idPartido'], TRUE);
 			include '../Views/MESSAGE.php';
-			new Mensaje($respuesta, '../Controllers/Index_CONTROLLER.php');
+			new Mensaje($respuesta, "../Controllers/Partido_CONTROLLER.php?action=list");
 		break;
 
 		case 'delete2':
 			$respuesta = $partido->_deletePartido($_REQUEST['idPartido'], FALSE);
 			include '../Views/MESSAGE.php';
-			new Mensaje($respuesta, '../Controllers/Index_CONTROLLER.php');
+			new Mensaje($respuesta, "../Controllers/Partido_CONTROLLER.php?action=list");
 		break;
 	}
 }
